@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
+/* Custom Theme Colors */
+@theme {
+  --color-light-hover: #fcf4ff;
+  --color-dark-hover: #2a004a;
+  --color-dark-theme: #11001F;
+}
 
+/* Custom Fonts */
+* {
+  font-family: 'Outfit', sans-serif;
+}
 
-*{
-  font-family: Outfit;
+.font-ovo {
+  font-family: 'Ovo', serif;
 }
