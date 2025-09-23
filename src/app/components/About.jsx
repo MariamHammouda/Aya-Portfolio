@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import aboutInfo from "../data/aboutInfo.js"
 
 const About = () => {
   return (
@@ -41,14 +40,7 @@ const About = () => {
         </div>
 
 
-        <ul>
-          {aboutInfo.map(({icon})=>(
-            <li></li>
-          ))}
-
-
-
-        </ul>
+     
 
 
       </div>
