@@ -32,7 +32,7 @@ const Navbar = () => {
             />
 
             {/* Second Logo - Name Logo */}
-            <Image src="/name-logo.png" alt="Aya Name" width={70} height={70} />
+            <Image src="/name-logo.png" alt="Aya Name" width={250} height={250} />
           </div>
         </a>
 
