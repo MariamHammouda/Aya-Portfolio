@@ -1,7 +1,20 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Image from "next/image";
 
+
 const Navbar = () => {
+
+  const sideMenuLinlk = useRef() ;
+
+  const openMenu = () => {
+    sideMenuLinlk.current.style.transform = 'translateX(0)'
+  }
+   const closeMenu = () => {
+    sideMenuLinlk.current.style.transform = 'translateX(100%)'
+  }
+
   return (
     <>
       <nav className="bg-white shadow-md w-full fixed px-6 lg:px-8 xl:px[8%] py-4 flex items-center justify-between z-50">
@@ -96,11 +109,11 @@ const Navbar = () => {
 
           {/* menu-black */}
 
-          <button className="cursor-pointer block md:hidden ml-3">
+          <button className="cursor-pointer block md:hidden ml-3" onClick={openMenu}>
             <Image
               className="w-8"
               src="/images/icons/menu-black.png"
-              alt="Arrow Icon"
+              alt="menu-black"
               width={16}
               height={16}
             />
@@ -108,9 +121,9 @@ const Navbar = () => {
         </div>
         {/* ------------------------------------- mobile menue -------------------------------------   */}
 
-        <ul className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-0 top-0 botton-0 w-64 z-50 h-screen bg-rose-50 transition duration-500">
+        <ul ref={sideMenuLinlk} className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-0 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500">
           
-          <div className="absolute right-6 top-6">
+          <div className="absolute right-6 top-6" onClick={closeMenu}>
               <Image
               className="w-5 cursor-pointer"
               src="/images/icons/close-black.png"
@@ -122,27 +135,27 @@ const Navbar = () => {
           
           
           <li>
-            <a href="#top" className="cursor-pointer font-ovo">
+            <a href="#top" className="cursor-pointer font-ovo" onClick={closeMenu}>
               Home
             </a>
           </li>
           <li>
-            <a href="#about" className="cursor-pointer font-ovo">
+            <a href="#about" className="cursor-pointer font-ovo" onClick={closeMenu}>
               About
             </a>
           </li>
           <li>
-            <a href="#services" className="cursor-pointer font-ovo">
+            <a href="#services" className="cursor-pointer font-ovo" onClick={closeMenu}>
               Services
             </a>
           </li>
           <li>
-            <a href="#work" className="cursor-pointer font-ovo">
+            <a href="#work" className="cursor-pointer font-ovo" onClick={closeMenu}>
               My Work
             </a>
           </li>
           <li>
-            <a href="#contact" className="cursor-pointer font-ovo">
+            <a href="#contact" className="cursor-pointer font-ovo" onClick={closeMenu}>
               Contact me
             </a>
           </li>
