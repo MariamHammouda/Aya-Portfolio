@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom Theme Colors */
 @theme {
   --color-light-hover: #fcf4ff;
