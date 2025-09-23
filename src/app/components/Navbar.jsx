@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white shadow-md w-full fixed px-6 lg:px-8 xl:px[8%] py-4 flex items-center justify-between z-50">
+      <nav className="bg-white shadow-md w-full fixed px-6 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50">
         {/* ------------------------------------- logo images -------------------------------------   */}
         <a href="#top">
           {" "}
