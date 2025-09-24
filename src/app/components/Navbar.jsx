@@ -29,10 +29,17 @@ const Navbar = () => {
               alt="Aya Logo"
               width={100}
               height={100}
+              className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
             />
 
             {/* Second Logo - Name Logo */}
-            <Image src="/name-logo.png" alt="Aya Name" width={250} height={250} />
+            <Image 
+              src="/name-logo.png" 
+              alt="Aya Name" 
+              width={250} 
+              height={250} 
+              className="w-32 h-auto sm:w-40 md:w-48 lg:w-56 xl:w-64"
+            />
           </div>
         </a>
 
@@ -80,11 +87,11 @@ const Navbar = () => {
 
         {/* ------------------------------------- Contact Button -------------------------------------   */}
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
           {/* Dark/Light Mode Toggle Button */}
-          <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
+          <button className="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 transition-colors">
             <Image
-              className="w-10 h-10"
+              className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
               src="/images/icons/moon_icon.png"
               alt="Dark Mode Toggle"
               width={40}
@@ -95,7 +102,7 @@ const Navbar = () => {
           {/* Contact Button */}
           <a
             href="#contact"
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 bg-[#F2308D] rounded-full ml-4  hover:bg-[#bd266e] text-white"
+            className="hidden lg:flex items-center gap-3 px-6 xl:px-10 py-2.5 border border-gray-500 bg-[#F2308D] rounded-full ml-2 xl:ml-4 hover:bg-[#bd266e] text-white text-sm xl:text-base"
           >
             Contact
             <Image
@@ -109,9 +116,9 @@ const Navbar = () => {
 
           {/* menu-black */}
 
-          <button className="cursor-pointer block md:hidden ml-3" onClick={openMenu}>
+          <button className="cursor-pointer block md:hidden ml-2 sm:ml-3" onClick={openMenu}>
             <Image
-              className="w-8"
+              className="w-6 h-6 sm:w-8 sm:h-8"
               src="/images/icons/menu-black.png"
               alt="menu-black"
               width={16}

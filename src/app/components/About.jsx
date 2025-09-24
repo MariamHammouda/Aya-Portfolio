@@ -41,7 +41,8 @@ const About = () => {
 
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
             {aboutInfo.map(({ icon, title, description }, index) => (
-              <li className="border-[2px] border-[#F2308D] rounded-xl p-6 cursor-pointer" key={index}>
+              <li className="border-[2px] border-[#F2308D] rounded-xl p-6 cursor-pointer hover:bg-[var(--color-light-hover)] 
+              hover:-translate-y-2 duration-500 hover:shadow-black" key={index}>
                 <Image
                   src={icon.iconLight}
                   alt={title}
