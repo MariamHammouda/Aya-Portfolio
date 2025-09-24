@@ -7,9 +7,13 @@ html {
 
 /* Custom Theme Colors */
 @theme {
-  --color-light-hover: #fcf4ff;
+  --color-light-hover: #f7e1f3;
   --color-dark-hover: #2a004a;
   --color-dark-theme: #11001F;
+
+  /* Custom Shadows */
+  --shadow-black: 4px 4px 0 #000;
+  --shadow-white: 4px 4px 0 #fff;
 }
 
 /* Custom Fonts */
@@ -19,4 +23,13 @@ html {
 
 .font-ovo {
   font-family: 'Ovo', serif;
+}
+
+/* Custom utility classes */
+.shadow-black {
+  box-shadow: var(--shadow-black);
+}
+
+.shadow-white {
+  box-shadow: var(--shadow-white);
 }
