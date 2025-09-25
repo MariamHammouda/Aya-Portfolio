@@ -1,10 +1,15 @@
 export const serviceData = [
   {
     icon: "/images/icons/content-creator.png",
-    title: "Content Creation",
+    title: "Copy Writing and facebook pages",
     description:
       "Crafting creative and engaging content tailored to each platform to strengthen brand presence.",
     link: "#",
+
+    dropdownItems: [
+      { category: "Copy Writing", navigate: "/CopyWriting" },
+      { category: "facebook pages", navigate: "/facebook pages" },
+    ],
   },
   {
     icon: "/images/icons/script.png",
