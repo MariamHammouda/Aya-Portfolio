@@ -7,8 +7,8 @@ export const serviceData = [
     link: "#",
 
     dropdownItems: [
-      { category: "Copy Writing", navigate: "/CopyWriting" },
-      { category: "facebook pages", navigate: "/facebook pages" },
+      { category: "Copy Writing", navigate: "/copywriting" },
+      { category: "facebook pages", navigate: "/facebook-pages" },
     ],
   },
   {

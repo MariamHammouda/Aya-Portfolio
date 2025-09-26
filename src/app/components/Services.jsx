@@ -7,8 +7,12 @@ import { useState } from "react";
 
 import { serviceData } from "../data/serviceData.js";
 
+import { useRouter } from 'next/navigation';
+
 const Services = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const router = useRouter();
+  
 
   return (
     <div id="services" className="w-full px-[12%] py-10 scroll-mt-20">
@@ -65,8 +69,9 @@ const Services = () => {
                           className="px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-200 last:border-b-0"
                           onClick={(e) => {
                             e.stopPropagation();
-                            console.log(`Clicked: ${item.category}`);
-                            // Navigation will go here later
+                            if (item.navigate) {
+                              router.push(item.navigate);
+                            }
                           }}
                         >
                           <span className="text-gray-700 font-medium">
