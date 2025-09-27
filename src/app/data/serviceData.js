@@ -46,4 +46,14 @@ export const serviceData = [
       "Producing engaging Reels and videos that align with trends and drive audience connection.",
     link: "#",
   },
+  {
+    icon: "/images/icons/medical.png",
+    title: "Medical & Healthcare",
+    description:
+      "Specialized copywriting for healthcare professionals, medical practices, and wellness brands.",
+    link: "#",
+    dropdownItems: [
+      { category: "Medical & Healthcare", navigate: "/copywriting/medical-healthcare" },
+    ],
+  },
 ];

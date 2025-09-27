@@ -14,7 +14,12 @@ export default function CopywritingPage() {
         </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
-        <div className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer">
+        
+        {/* Medical & Healthcare Card */}
+        <Link 
+          href="/copywriting/medical-healthcare"
+          className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer block"
+        >
           <div className="w-full h-72 sm:h-96 relative mb-4 overflow-hidden rounded-md">
             <Image 
               src="/images/mediacl-healthcare.jpg" 
@@ -26,8 +31,13 @@ export default function CopywritingPage() {
             />
           </div>
           <h3 className="text-lg font-semibold">Medical & Healthcare</h3>
-        </div>
-        <div className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer">
+        </Link>
+
+        {/* Restaurants & Food Card */}
+        <Link 
+          href="/copywriting/restaurants-food"
+          className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer block"
+        >
           <div className="w-full h-72 sm:h-96 relative mb-4 overflow-hidden rounded-md">
             <Image 
               src="/images/resturant-foods.jpg" 
@@ -39,8 +49,13 @@ export default function CopywritingPage() {
             />
           </div>
           <h3 className="text-lg font-semibold">Restaurants & Food</h3>
-        </div>
-        <div className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer">
+        </Link>
+
+        {/* Retail & Stores Card */}
+        <Link 
+          href="/copywriting/retail-stores"
+          className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer block"
+        >
           <div className="w-full h-72 sm:h-96 relative mb-4 overflow-hidden rounded-md">
             <Image 
               src="/images/stores.jpg" 
@@ -52,8 +67,13 @@ export default function CopywritingPage() {
             />
           </div>
           <h3 className="text-lg font-semibold">Retail & Stores 🏢</h3>
-        </div>
-        <div className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer">
+        </Link>
+
+        {/* International Clients Card */}
+        <Link 
+          href="/copywriting/international-clients"
+          className="border border-gray-300 rounded-lg p-4 hover:shadow-md hover:-translate-y-1 duration-300 cursor-pointer block"
+        >
           <div className="w-full h-72 sm:h-96 relative mb-4 overflow-hidden rounded-md">
             <Image 
               src="/images/international-clients.jpg" 
@@ -65,7 +85,8 @@ export default function CopywritingPage() {
             />
           </div>
           <h3 className="text-lg font-semibold">International Clients</h3>
-        </div>
+        </Link>
+
       </div>
     </div>
   );

@@ -60,13 +60,13 @@ const Services = () => {
                     <span className="text-gray-500 text-xs">▼</span>
                   </div>
 
-                  {/* Dropdown Menu */}
+              {/* Dropdown Menu */}
                   {openDropdown === index && (
-                    <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+                    <div className="absolute left-0 right-0 top-full mt-2 border border-gray-300 rounded-lg shadow-lg z-50 bg-[#F0308F]">
                       {dropdownItems.map((item, itemIndex) => (
                         <div
                           key={itemIndex}
-                          className="px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-200 last:border-b-0"
+                          className="px-4 py-3 hover:bg-[#C1277A] cursor-pointer border-b border-pink-300 last:border-b-0 transition-colors duration-200"
                           onClick={(e) => {
                             e.stopPropagation();
                             if (item.navigate) {
@@ -74,7 +74,7 @@ const Services = () => {
                             }
                           }}
                         >
-                          <span className="text-gray-700 font-medium">
+                          <span className="text-white font-medium">
                             {item.category}
                           </span>
                         </div>
