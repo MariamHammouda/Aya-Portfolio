@@ -70,7 +70,13 @@ const Services = () => {
                           onClick={(e) => {
                             e.stopPropagation();
                             if (item.navigate) {
-                              router.push(item.navigate);
+                              if (item.navigate.startsWith('http')) {
+                                // External link (Facebook pages)
+                                window.open(item.navigate, '_blank', 'noopener,noreferrer');
+                              } else {
+                                // Internal route
+                                router.push(item.navigate);
+                              }
                             }
                           }}
                         >
@@ -84,19 +90,35 @@ const Services = () => {
                 </>
               )}
 
-              <a
-                href={link}
-                className="flex items-center justify-center gap-2 text-sm mt-5 text-[#F2308D] hover:text-[#bd266e] transition-colors"
-              >
-                Read more
-                <Image
-                  src="/images/icons/right-arrow.png"
-                  alt="Arrow"
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </a>
+              {link && link !== "#" ? (
+                <button
+                  onClick={() => router.push(link)}
+                  className="flex items-center justify-center gap-2 text-sm mt-5 text-[#F2308D] hover:text-[#bd266e] transition-colors cursor-pointer"
+                >
+                  Read more
+                  <Image
+                    src="/images/icons/right-arrow.png"
+                    alt="Arrow"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </button>
+              ) : (
+                <a
+                  href={link}
+                  className="flex items-center justify-center gap-2 text-sm mt-5 text-[#F2308D] hover:text-[#bd266e] transition-colors"
+                >
+                  Read more
+                  <Image
+                    src="/images/icons/right-arrow.png"
+                    alt="Arrow"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
+                </a>
+              )}
             </div>
           )
         )}
