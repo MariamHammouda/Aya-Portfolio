@@ -34,6 +34,8 @@ const Services = () => {
               onClick={
                 dropdownItems
                   ? () => setOpenDropdown(openDropdown === index ? null : index)
+                  : link && link !== "#"
+                  ? () => router.push(link)
                   : undefined
               }
             >
@@ -92,7 +94,10 @@ const Services = () => {
 
               {link && link !== "#" ? (
                 <button
-                  onClick={() => router.push(link)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    router.push(link);
+                  }}
                   className="flex items-center justify-center gap-2 text-sm mt-5 text-[#F2308D] hover:text-[#bd266e] transition-colors cursor-pointer"
                 >
                   Read more
