@@ -30,7 +30,7 @@ export const serviceData = [
     title: "Social Media Marketing & Management",
     description:
       "Building strategies, creating content plans, and managing communities to grow audience engagement.",
-    link: "#",
+    link: "/social-media-marketing",
   },
   {
     icon: "/images/icons/photography.png",
