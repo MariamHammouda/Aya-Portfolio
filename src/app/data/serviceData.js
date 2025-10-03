@@ -8,7 +8,7 @@ export const serviceData = [
 
     dropdownItems: [
       { category: "Copy Writing", navigate: "/copywriting" },
-      { category: "facebook pages", navigate: "/facebook-pages" },
+      { category: "Facebook Pages", navigate: "/facebook-pages" },
     ],
   },
   {
@@ -38,6 +38,10 @@ export const serviceData = [
     description:
       "Creating high-quality visuals that highlight products and boost brand storytelling.",
     link: "#",
+    dropdownItems: [
+      { category: "Photos", navigate: "/photos" },
+      { category: "Reels", navigate: "/reels" },
+    ],
   },
   {
     icon: "/images/icons/article.png",
@@ -45,5 +49,9 @@ export const serviceData = [
     description:
       "Writing SEO-optimized articles and content that improve search rankings and drive organic traffic.",
     link: "#",
+    dropdownItems: [
+      { category: "Products Content", navigate: "/products-content" },
+      { category: "Articles", navigate: "/articles" },
+    ],
   },
 ];

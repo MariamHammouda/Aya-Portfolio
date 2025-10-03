@@ -3,10 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { scriptWritingVideos } from "../data/scriptWritingVideos";
+import { scriptWritingPrograms, scriptWritingVideos } from "../data/scriptWritingVideos";
 
 export default function ScriptWritingPage() {
+
+
+  console.log('Program thumbnail path:', scriptWritingPrograms[0]?.programThumbnail);
+  console.log('Full programs data:', scriptWritingPrograms);
+
+  // ... rest of code
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedProgram, setSelectedProgram] = useState(null);
+  const [imageErrors, setImageErrors] = useState(new Set());
 
   const handleVideoClick = (video) => {
     if (video.videoType === "facebook") {
@@ -16,6 +24,10 @@ export default function ScriptWritingPage() {
       // Show embedded video player
       setSelectedVideo(video);
     }
+  };
+
+  const handleProgramClick = (program) => {
+    setSelectedProgram(selectedProgram?.id === program.id ? null : program);
   };
 
   const closeVideoModal = () => {
@@ -35,75 +47,237 @@ export default function ScriptWritingPage() {
       </div>
       
       <p className="text-gray-700 font-Ovo max-w-3xl mb-8">
-        Explore my script writing work across different industries. Click on video cards to watch content either here on the site or on Facebook pages. Each script is crafted to engage audiences and deliver compelling stories that drive results.
+        Explore my script writing work organized by programs and episodes. Click on program cards to view episodes, then click on episode cards to watch content on Facebook pages. Each script is crafted to engage audiences and deliver compelling stories that drive results.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {scriptWritingVideos.map((video) => (
-          <div
-            key={video.id}
-            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
-            onClick={() => handleVideoClick(video)}
-          >
-            <div className="relative w-full h-48 bg-gray-100">
-              {/* Video Thumbnail */}
-              <div className="w-full h-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2">
-                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
+      {/* Programs Section */}
+      <div className="mb-12">
+        <h3 className="text-2xl font-Ovo mb-6 text-gray-800">TV Programs</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {scriptWritingPrograms.map((program) => (
+            <div key={program.id} className="space-y-4">
+              {/* Program Card */}
+              <div
+                className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
+                onClick={() => handleProgramClick(program)}
+              >
+                <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
+                  {!imageErrors.has(`program-${program.id}`) ? (
+                    <Image
+                      src={program.programThumbnail}
+                      alt={program.programTitle}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      priority={program.id === 1}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      onError={(e) => {
+                        console.error('Image failed to load:', program.programThumbnail);
+                        setImageErrors(prev => new Set([...prev, `program-${program.id}`]));
+                      }}
+                    />
+                  ) : (
+                    /* Fallback content if image fails to load */
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                          </svg>
+                        </div>
+                        <p className="text-sm text-gray-600 font-medium">Program Cover</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Overlay for better text readability */}
+                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-500 text-white shadow-lg">
+                      {program.totalEpisodes} حلقات
+                    </span>
                   </div>
-                  <p className="text-sm text-gray-600 font-medium">{video.category}</p>
+                </div>
+
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-gray-900">
+                    {program.programTitle}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-3 group-hover:text-gray-700">
+                    {program.programDescription}
+                  </p>
+                  
+                  <span className="inline-flex items-center gap-2 text-[#F2308D] font-medium">
+                    {selectedProgram?.id === program.id ? 'إخفاء الحلقات' : 'عرض الحلقات'}
+                    <Image
+                      src="/images/icons/right-arrow.png"
+                      alt="Arrow"
+                      width={16}
+                      height={16}
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        selectedProgram?.id === program.id ? 'rotate-90' : ''
+                      }`}
+                    />
+                  </span>
                 </div>
               </div>
-              
-              {/* Video Type Badge */}
-              <div className="absolute top-3 right-3">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  video.videoType === 'facebook' 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-green-500 text-white'
-                }`}>
-                  {video.videoType === 'facebook' ? 'Facebook' : 'Watch Here'}
+
+              {/* Episodes Grid */}
+              {selectedProgram?.id === program.id && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 animate-fadeIn">
+                  {program.episodes.map((episode) => (
+                    <div
+                      key={episode.id}
+                      className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-300 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group bg-white"
+                      onClick={() => handleVideoClick(episode)}
+                    >
+                      <div className="relative w-full h-32 bg-gray-50 overflow-hidden">
+                        {/* Use the program cover as episode thumbnail for now */}
+                        <Image
+                          src={program.programThumbnail}
+                          alt={episode.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          onError={(e) => {
+                            console.error('Episode image failed to load:', program.programThumbnail);
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                        
+                        {/* Play button overlay */}
+                        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                          <div className="w-12 h-12 bg-[#F2308D] bg-opacity-90 rounded-full flex items-center justify-center">
+                            <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+                        
+                        {/* Episode number badge */}
+                        <div className="absolute bottom-2 left-2">
+                          <span className="px-2 py-1 rounded bg-black bg-opacity-70 text-white text-xs font-medium">
+                            الحلقة {episode.episodeNumber}
+                          </span>
+                        </div>
+                        
+                        <div className="absolute top-2 right-2">
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            episode.videoType === 'facebook' 
+                              ? 'bg-blue-500 text-white' 
+                              : 'bg-green-500 text-white'
+                          }`}>
+                            {episode.videoType === 'facebook' ? 'Facebook' : 'Watch Here'}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="p-3">
+                        <h4 className="text-sm font-semibold text-gray-800 mb-1 group-hover:text-gray-900 line-clamp-2">
+                          {episode.title}
+                        </h4>
+                        <p className="text-xs text-gray-600 mb-2 group-hover:text-gray-700 line-clamp-2">
+                          {episode.description}
+                        </p>
+                        
+                        <div className="mb-2">
+                          <ul className="text-xs text-gray-500 space-y-1">
+                            {episode.scriptHighlights.slice(0, 2).map((highlight, index) => (
+                              <li key={index} className="flex items-center gap-1">
+                                <span className="w-1 h-1 bg-[#F2308D] rounded-full"></span>
+                                {highlight}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <span className="inline-flex items-center gap-1 text-[#F2308D] font-medium text-xs">
+                          {episode.videoType === 'facebook' ? 'مشاهدة على فيسبوك' : 'مشاهدة الفيديو'}
+                          <Image
+                            src="/images/icons/right-arrow.png"
+                            alt="Arrow"
+                            width={12}
+                            height={12}
+                            className="w-3 h-3"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Other Videos Section */}
+      <div className="mb-12">
+        <h3 className="text-2xl font-Ovo mb-6 text-gray-800">Other Script Writing Work</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {scriptWritingVideos.map((video) => (
+            <div
+              key={video.id}
+              className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
+              onClick={() => handleVideoClick(video)}
+            >
+              <div className="relative w-full h-48 bg-gray-100">
+                <div className="w-full h-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                    <p className="text-sm text-gray-600 font-medium">{video.category}</p>
+                  </div>
+                </div>
+                
+                <div className="absolute top-3 right-3">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    video.videoType === 'facebook' 
+                      ? 'bg-blue-500 text-white' 
+                      : 'bg-green-500 text-white'
+                  }`}>
+                    {video.videoType === 'facebook' ? 'Facebook' : 'Watch Here'}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-gray-900">
+                  {video.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3 group-hover:text-gray-700">
+                  {video.description}
+                </p>
+                
+                <div className="mb-4">
+                  <h4 className="text-xs font-semibold text-gray-700 mb-2">Script Highlights:</h4>
+                  <ul className="text-xs text-gray-600 space-y-1">
+                    {video.scriptHighlights.map((highlight, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <span className="w-1 h-1 bg-[#F2308D] rounded-full"></span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <span className="inline-flex items-center gap-2 text-[#F2308D] font-medium">
+                  {video.videoType === 'facebook' ? 'View on Facebook' : 'Watch Video'}
+                  <Image
+                    src="/images/icons/right-arrow.png"
+                    alt="Arrow"
+                    width={16}
+                    height={16}
+                    className="w-4 h-4"
+                  />
                 </span>
               </div>
             </div>
-
-            <div className="p-5">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-gray-900">
-                {video.title}
-              </h3>
-              <p className="text-sm text-gray-600 mb-3 group-hover:text-gray-700">
-                {video.description}
-              </p>
-              
-              {/* Script Highlights */}
-              <div className="mb-4">
-                <h4 className="text-xs font-semibold text-gray-700 mb-2">Script Highlights:</h4>
-                <ul className="text-xs text-gray-600 space-y-1">
-                  {video.scriptHighlights.map((highlight, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-[#F2308D] rounded-full"></span>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <span className="inline-flex items-center gap-2 text-[#F2308D] font-medium">
-                {video.videoType === 'facebook' ? 'View on Facebook' : 'Watch Video'}
-                <Image
-                  src="/images/icons/right-arrow.png"
-                  alt="Arrow"
-                  width={16}
-                  height={16}
-                  className="w-4 h-4"
-                />
-              </span>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Video Modal for Embedded Videos */}
@@ -121,22 +295,44 @@ export default function ScriptWritingPage() {
             </div>
             
             <div className="p-4">
-              {/* Video Player Placeholder */}
-              <div className="w-full h-64 sm:h-96 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
-                <div className="text-center text-white">
-                  <div className="w-20 h-20 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
+              {/* Embedded Video Player */}
+              <div className="w-full bg-gray-900 rounded-lg overflow-hidden mb-4">
+                {selectedVideo.videoUrl && selectedVideo.videoUrl.includes('facebook.com') ? (
+                  <div className="relative w-full" style={{ paddingBottom: '120%' /* Taller aspect ratio for full video visibility */ }}>
+                    <iframe
+                      src={`https://www.facebook.com/plugins/video.php?height=800&href=${encodeURIComponent(selectedVideo.videoUrl)}&show_text=false&width=560&t=0`}
+                      width="560"
+                      height="800"
+                      style={{ 
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        border: 'none',
+                        overflow: 'hidden'
+                      }}
+                      scrolling="no"
+                      frameBorder="0"
+                      allowFullScreen={true}
+                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    ></iframe>
                   </div>
-                  <p className="text-lg font-medium mb-2">Video Player</p>
-                  <p className="text-sm text-gray-300">
-                    Video would be embedded here: {selectedVideo.videoUrl}
-                  </p>
-                  <p className="text-xs text-gray-400 mt-2">
-                    (In production, this would show the actual video player)
-                  </p>
-                </div>
+                ) : (
+                  <div className="w-full h-64 sm:h-96 flex items-center justify-center text-white">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                      <p className="text-lg font-medium mb-2">Video Player</p>
+                      <p className="text-sm text-gray-300">
+                        Video URL: {selectedVideo.videoUrl || 'No video URL provided'}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
               
               <div className="space-y-4">
