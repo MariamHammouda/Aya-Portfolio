@@ -1,7 +1,7 @@
 export const serviceData = [
   {
     icon: "/images/icons/content-creator.png",
-    title: "Copy Writing and facebook pages",
+    title: "Content Creation",
     description:
       "Crafting creative and engaging content tailored to each platform to strengthen brand presence.",
     link: "#",
@@ -27,23 +27,23 @@ export const serviceData = [
   },
   {
     icon: "/images/icons/social-media.png",
-    title: "Social Media Marketing & Management",
+    title: "Social Media Campaigns",
     description:
       "Building strategies, creating content plans, and managing communities to grow audience engagement.",
     link: "/social-media-marketing",
   },
   {
     icon: "/images/icons/photography.png",
-    title: "Food Photography & Product Shooting",
+    title: "Photography & Reels",
     description:
       "Creating high-quality visuals that highlight products and boost brand storytelling.",
     link: "#",
   },
   {
-    icon: "/images/icons/video.png",
-    title: "Reels & Video Content",
+    icon: "/images/icons/article.png",
+    title: "Articles & SEO",
     description:
-      "Producing engaging Reels and videos that align with trends and drive audience connection.",
+      "Writing SEO-optimized articles and content that improve search rankings and drive organic traffic.",
     link: "#",
   },
 ];

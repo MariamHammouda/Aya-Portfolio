@@ -6,7 +6,7 @@ html {
 }
 
 /* Custom Theme Colors */
-@theme {
+:root {
   --color-light-hover: #f7e1f3;
   --color-dark-hover: #2a004a;
   --color-dark-theme: #11001F;
@@ -32,4 +32,25 @@ html {
 
 .shadow-white {
   box-shadow: var(--shadow-white);
+}
+
+/* Performance optimizations */
+.hover-transform {
+  will-change: transform, box-shadow, background-color, border-color;
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
+}
+
+.dropdown-menu {
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize transitions for better performance */
+.transition-optimized {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s ease,
+              border-color 0.2s ease;
 }
