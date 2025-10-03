@@ -53,6 +53,44 @@ export default function ReelsPage() {
         Discover my collection of engaging reels and short-form video content created for various brands and platforms. Each reel is designed to capture attention, drive engagement, and deliver results across social media channels.
       </p>
 
+      {/* Featured Facebook Reel */}
+      <div className="mb-12">
+        <h3 className="text-2xl font-Ovo text-gray-800 mb-6 text-center">Featured Reel</h3>
+        <div className="flex justify-center">
+          <div className="bg-white rounded-lg shadow-lg p-4 max-w-md">
+            <iframe 
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F548424947584258&show_text=false&width=500" 
+              width="500" 
+              height="600" 
+              style={{border: 'none', overflow: 'hidden'}} 
+              scrolling="no" 
+              frameBorder="0" 
+              allowFullScreen={true} 
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              className="w-full max-w-full"
+            />
+          </div>
+        </div>
+        
+        {/* Fallback if embed doesn't work */}
+        <div className="mt-4 text-center">
+          <p className="text-sm text-gray-500 mb-2">
+            If the reel doesn't display above, click below to watch on Facebook:
+          </p>
+          <a
+            href="https://www.facebook.com/reel/548424947584258"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] transition-colors duration-200"
+          >
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Watch Reel on Facebook
+          </a>
+        </div>
+      </div>
+
       {/* Category Filter */}
       <div className="flex flex-wrap gap-3 mb-8">
         {categories.map((category) => (
