@@ -49,11 +49,14 @@ export default function InternationalClientsPage() {
               />
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800 group-hover:text-[#F2308D] transition-colors">
+              <h3 className="text-lg font-semibold text-gray-800 group-hover:text-[#F2308D] transition-colors mb-2">
                 {client.name}
               </h3>
-              <p className="text-sm text-gray-600 mt-1">
-                Click to view Facebook page
+              <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+                {client.description}
+              </p>
+              <p className="text-xs text-[#F2308D] font-medium">
+                Click to view Facebook page →
               </p>
             </div>
           </a>
