@@ -13,6 +13,7 @@ export default function ScriptWritingPage() {
 
   // ... rest of code
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedEpisode, setSelectedEpisode] = useState(null);
   const [selectedProgram, setSelectedProgram] = useState(null);
   const [imageErrors, setImageErrors] = useState(new Set());
 
@@ -34,6 +35,14 @@ export default function ScriptWritingPage() {
     setSelectedVideo(null);
   };
 
+  const handleEpisodeClick = (episode) => {
+    setSelectedEpisode(episode);
+  };
+
+  const closeEpisodeModal = () => {
+    setSelectedEpisode(null);
+  };
+
   return (
     <div className="w-full px-[12%] py-10 scroll-mt-20">
       <div className="flex items-center justify-between gap-4 mb-6">
@@ -47,7 +56,7 @@ export default function ScriptWritingPage() {
       </div>
       
       <p className="text-gray-700 font-Ovo max-w-3xl mb-8">
-        Explore my script writing work organized by programs and episodes. Click on program cards to view episodes, then click on episode cards to watch content on Facebook pages. Each script is crafted to engage audiences and deliver compelling stories that drive results.
+        Explore my script writing work organized by programs and episodes. Click on program cards to view episodes, then click on episode cards to watch videos directly on this page or navigate to Facebook. Each script is crafted to engage audiences and deliver compelling stories that drive results.
       </p>
 
       {/* Programs Section */}
@@ -120,36 +129,23 @@ export default function ScriptWritingPage() {
                 </div>
               </div>
 
-              {/* Episodes Grid */}
               {selectedProgram?.id === program.id && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 animate-fadeIn">
                   {program.episodes.map((episode) => (
                     <div
                       key={episode.id}
-                      className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-300 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group bg-white"
-                      onClick={() => handleVideoClick(episode)}
+                      className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
+                      onClick={() => handleEpisodeClick(episode)}
                     >
-                      <div className="relative w-full h-32 bg-gray-50 overflow-hidden">
-                        {/* Use the program cover as episode thumbnail for now */}
-                        <Image
-                          src={program.programThumbnail}
-                          alt={episode.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          onError={(e) => {
-                            console.error('Episode image failed to load:', program.programThumbnail);
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                        
-                        {/* Play button overlay */}
-                        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                          <div className="w-12 h-12 bg-[#F2308D] bg-opacity-90 rounded-full flex items-center justify-center">
-                            <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <div className="relative w-full h-32 bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden flex items-center justify-center">
+                        {/* Beautiful gradient background with play button */}
+                        <div className="text-center">
+                          <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z"/>
                             </svg>
                           </div>
+                          <p className="text-xs text-gray-700 font-medium px-2 line-clamp-2">{episode.title}</p>
                         </div>
                         
                         {/* Episode number badge */}
@@ -376,6 +372,128 @@ export default function ScriptWritingPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] flex items-center gap-2"
+                  >
+                    View on Facebook
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Episode Modal - Watch Episodes on Same Page */}
+      {selectedEpisode && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="text-xl font-semibold">{selectedEpisode.title}</h3>
+              <button
+                onClick={closeEpisodeModal}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="p-4">
+              {/* Episode Video Embed - Watch on Same Page */}
+              <div className="w-full bg-white rounded-lg overflow-hidden mb-4">
+                {selectedEpisode.videoType === 'facebook_embedded' && selectedEpisode.embedCode ? (
+                  // Custom Facebook embed for Draya Laboratory
+                  <div className="flex justify-center">
+                    <div className="bg-white rounded-lg shadow-lg p-4">
+                      <div dangerouslySetInnerHTML={{ __html: selectedEpisode.embedCode }} />
+                    </div>
+                  </div>
+                ) : selectedEpisode.videoUrl && selectedEpisode.videoUrl.includes('facebook.com') ? (
+                  // Standard Facebook post embed
+                  <div className="flex justify-center">
+                    <div className="bg-white rounded-lg shadow-lg p-4 max-w-lg w-full">
+                      <iframe 
+                        src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(selectedEpisode.videoUrl)}&show_text=false&width=500`}
+                        width="500" 
+                        height="600" 
+                        style={{border: 'none', overflow: 'hidden'}} 
+                        scrolling="no" 
+                        frameBorder="0" 
+                        allowFullScreen={true} 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        className="w-full max-w-full"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  // Fallback if no embed available
+                  <div className="w-full h-64 sm:h-96 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                      <p className="text-lg font-medium mb-2">Episode Player</p>
+                      <p className="text-sm text-gray-600">
+                        Episode URL: {selectedEpisode.videoUrl || 'No video URL provided'}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Navigation Options */}
+              <div className="text-center mb-4">
+                <p className="text-sm text-gray-500 mb-3">
+                  Watch the episode above or open it directly on Facebook:
+                </p>
+                <a
+                  href={selectedEpisode.facebookUrl || selectedEpisode.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                  </svg>
+                  Open on Facebook
+                </a>
+              </div>
+              
+              {/* Episode Details */}
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-gray-800 mb-2">Episode Description</h4>
+                  <p className="text-gray-600">{selectedEpisode.description}</p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-gray-800 mb-2">Script Highlights</h4>
+                  <ul className="text-gray-600 space-y-1">
+                    {selectedEpisode.scriptHighlights.map((highlight, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-[#F2308D] rounded-full"></span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                {/* Action Buttons */}
+                <div className="flex gap-4 pt-4 border-t">
+                  <button
+                    onClick={closeEpisodeModal}
+                    className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    Close Player
+                  </button>
+                  <a
+                    href={selectedEpisode.facebookUrl || selectedEpisode.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] flex items-center gap-2 transition-colors"
                   >
                     View on Facebook
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

@@ -1,7 +1,5 @@
 export const scriptWritingPrograms = [
   {
-
-
     id: 1,
     programTitle: "فيلا الاطباء - روشتة رمضان",
     programDescription: "برنامج طبي رمضاني يقدم نصائح صحية وطبية خلال شهر رمضان المبارك",
@@ -66,6 +64,31 @@ export const scriptWritingPrograms = [
           "إدارة التوتر والقلق",
           "الروحانية والسكينة",
           "التأمل والاسترخاء"
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    programTitle: "معمل دراية للتحاليل الطبية",
+    programDescription: "محتوى تسويقي متخصص لمعمل دراية للتحاليل الطبية يهدف إلى تعزيز الثقة وتوضيح أهمية التحاليل الطبية",
+    programThumbnail: "/images/second-program/program-cover.png",
+    totalEpisodes: 1,
+    episodes: [
+      {
+        id: 1,
+        episodeNumber: 1,
+        title: "الحلقة الأولى - التسويق لمعمل دراية",
+        description: "محتوى تسويقي احترافي لمعمل دراية للتحاليل الطبية",
+        thumbnail: "/images/second-program/program-cover.png",
+        videoType: "facebook_embedded",
+        videoUrl: "https://www.facebook.com/reel/1673384899968036/",
+        facebookUrl: "https://www.facebook.com/reel/1673384899968036/",
+        embedCode: '<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1673384899968036%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>',
+        scriptHighlights: [
+          "محتوى تسويقي طبي متخصص",
+          "بناء الثقة مع العملاء",
+          "توضيح أهمية التحاليل الطبية"
         ]
       }
     ]

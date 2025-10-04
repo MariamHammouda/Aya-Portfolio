@@ -20,7 +20,7 @@ export default function ArticlesPage() {
       slug: "shatabliy",
       description: "Business and entrepreneurship articles covering startup strategies, business development, and industry analysis.",
       imageUrl: "/images/seo/articles/shatabliy.png",
-      articleCount: "12+ Articles",
+      articleCount: "9 Articles",
       topics: ["Business Strategy", "Entrepreneurship", "Market Analysis", "Growth Hacking"]
     },
     {
