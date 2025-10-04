@@ -72,6 +72,8 @@ export default function ScriptWritingPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       onError={(e) => {
                         console.error('Image failed to load:', program.programThumbnail);
+                        console.error('Error details:', e);
+                        console.error('Program ID:', program.id);
                         setImageErrors(prev => new Set([...prev, `program-${program.id}`]));
                       }}
                     />
@@ -89,8 +91,10 @@ export default function ScriptWritingPage() {
                     </div>
                   )}
                   
-                  {/* Overlay for better text readability */}
-                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  {/* Overlay for better text readability - only show if image loads */}
+                  {!imageErrors.has(`program-${program.id}`) && (
+                    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  )}
                   
                   <div className="absolute top-3 right-3">
                     <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-500 text-white shadow-lg">
@@ -295,31 +299,26 @@ export default function ScriptWritingPage() {
             </div>
             
             <div className="p-4">
-              {/* Embedded Video Player */}
-              <div className="w-full bg-gray-900 rounded-lg overflow-hidden mb-4">
+              {/* Facebook Post Embed Player */}
+              <div className="w-full bg-white rounded-lg overflow-hidden mb-4">
                 {selectedVideo.videoUrl && selectedVideo.videoUrl.includes('facebook.com') ? (
-                  <div className="relative w-full" style={{ paddingBottom: '120%' /* Taller aspect ratio for full video visibility */ }}>
-                    <iframe
-                      src={`https://www.facebook.com/plugins/video.php?height=800&href=${encodeURIComponent(selectedVideo.videoUrl)}&show_text=false&width=560&t=0`}
-                      width="560"
-                      height="800"
-                      style={{ 
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        border: 'none',
-                        overflow: 'hidden'
-                      }}
-                      scrolling="no"
-                      frameBorder="0"
-                      allowFullScreen={true}
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    ></iframe>
+                  <div className="flex justify-center">
+                    <div className="bg-white rounded-lg shadow-lg p-4 max-w-lg w-full">
+                      <iframe 
+                        src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(selectedVideo.videoUrl)}&show_text=false&width=500`}
+                        width="500" 
+                        height="600" 
+                        style={{border: 'none', overflow: 'hidden'}} 
+                        scrolling="no" 
+                        frameBorder="0" 
+                        allowFullScreen={true} 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        className="w-full max-w-full"
+                      />
+                    </div>
                   </div>
                 ) : (
-                  <div className="w-full h-64 sm:h-96 flex items-center justify-center text-white">
+                  <div className="w-full h-64 sm:h-96 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -327,12 +326,30 @@ export default function ScriptWritingPage() {
                         </svg>
                       </div>
                       <p className="text-lg font-medium mb-2">Video Player</p>
-                      <p className="text-sm text-gray-300">
+                      <p className="text-sm text-gray-600">
                         Video URL: {selectedVideo.videoUrl || 'No video URL provided'}
                       </p>
                     </div>
                   </div>
                 )}
+              </div>
+              
+              {/* Fallback if embed doesn't work */}
+              <div className="text-center mb-4">
+                <p className="text-sm text-gray-500 mb-2">
+                  If the video doesn't display above, click below to watch on Facebook:
+                </p>
+                <a
+                  href={selectedVideo.facebookUrl || selectedVideo.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] transition-colors duration-200"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
               </div>
               
               <div className="space-y-4">

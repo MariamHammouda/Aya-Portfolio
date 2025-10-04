@@ -5,7 +5,7 @@ export const scriptWritingPrograms = [
     id: 1,
     programTitle: "فيلا الاطباء - روشتة رمضان",
     programDescription: "برنامج طبي رمضاني يقدم نصائح صحية وطبية خلال شهر رمضان المبارك",
-    programThumbnail: "/images/program-one/cover-img.jpg",
+    programThumbnail: "/images/first-program/cover-img.jpg",
     totalEpisodes: 4,
     episodes: [
       {

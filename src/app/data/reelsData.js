@@ -6,7 +6,7 @@ export const reelsData = [
     category: "Food & Restaurant",
     client: "Taste of Italy",
     videoUrl: "https://www.facebook.com/reel/1234567890",
-    thumbnailUrl: "/images/reels/thumbs/food-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "30 seconds",
     platform: "Instagram/Facebook",
     createdDate: "2024-03-20",
@@ -43,7 +43,7 @@ export const reelsData = [
     category: "Fashion & Beauty",
     client: "Chic Boutique",
     videoUrl: "https://www.facebook.com/reel/2345678901",
-    thumbnailUrl: "/images/reels/thumbs/fashion-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "45 seconds",
     platform: "Instagram/TikTok",
     createdDate: "2024-04-15",
@@ -80,7 +80,7 @@ export const reelsData = [
     category: "Product & Tech",
     client: "TechGear Pro",
     videoUrl: "https://www.facebook.com/reel/3456789012",
-    thumbnailUrl: "/images/reels/thumbs/tech-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "60 seconds",
     platform: "Instagram/YouTube",
     createdDate: "2024-05-10",
@@ -117,7 +117,7 @@ export const reelsData = [
     category: "Fitness & Health",
     client: "FitLife Gym",
     videoUrl: "https://www.facebook.com/reel/4567890123",
-    thumbnailUrl: "/images/reels/thumbs/fitness-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "30 seconds",
     platform: "Instagram/TikTok",
     createdDate: "2024-06-05",
@@ -154,7 +154,7 @@ export const reelsData = [
     category: "Business & Corporate",
     client: "Creative Agency Co.",
     videoUrl: "https://www.facebook.com/reel/5678901234",
-    thumbnailUrl: "/images/reels/thumbs/business-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "45 seconds",
     platform: "LinkedIn/Instagram",
     createdDate: "2024-07-12",
@@ -191,7 +191,7 @@ export const reelsData = [
     category: "Travel & Tourism",
     client: "Wanderlust Travel",
     videoUrl: "https://www.facebook.com/reel/6789012345",
-    thumbnailUrl: "/images/reels/thumbs/travel-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "60 seconds",
     platform: "Instagram/YouTube",
     createdDate: "2024-08-20",
@@ -228,7 +228,7 @@ export const reelsData = [
     category: "Food & Cooking",
     client: "Chef's Kitchen",
     videoUrl: "https://www.facebook.com/reel/7890123456",
-    thumbnailUrl: "/images/reels/thumbs/recipe-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "30 seconds",
     platform: "Instagram/TikTok",
     createdDate: "2024-09-08",
@@ -265,7 +265,7 @@ export const reelsData = [
     category: "Events & Conferences",
     client: "Tech Summit 2024",
     videoUrl: "https://www.facebook.com/reel/8901234567",
-    thumbnailUrl: "/images/reels/thumbs/event-reel-1-thumb.jpg",
+    thumbnailUrl: null, // Will use fallback content
     duration: "90 seconds",
     platform: "LinkedIn/Instagram",
     createdDate: "2024-09-25",

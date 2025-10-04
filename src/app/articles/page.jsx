@@ -1,38 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { articlesData } from "../data/articlesData";
+import Image from "next/image";
 
 export default function ArticlesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [sortBy, setSortBy] = useState("newest");
-
-  const categories = ["All", ...new Set(articlesData.map(item => item.category))];
-
-  let filteredData = selectedCategory === "All" 
-    ? articlesData 
-    : articlesData.filter(item => item.category === selectedCategory);
-
-  // Sort articles
-  filteredData = [...filteredData].sort((a, b) => {
-    if (sortBy === "newest") {
-      return new Date(b.publishDate) - new Date(a.publishDate);
-    } else if (sortBy === "oldest") {
-      return new Date(a.publishDate) - new Date(b.publishDate);
-    } else if (sortBy === "readTime") {
-      return parseInt(a.readTime) - parseInt(b.readTime);
+  const articleCategories = [
+    {
+      id: 1,
+      name: "Dr. Ahmed Abo Kresha",
+      slug: "dr-ahmed-abo-kresha",
+      description: "Medical and healthcare articles focusing on professional medical content, patient education, and healthcare industry insights.",
+      imageUrl: "/images/seo/articles/ahmdabokresha.png",
+      articleCount: "17 Articles",
+      topics: ["Medical Content", "Healthcare SEO", "Patient Education", "Medical Marketing"]
+    },
+    {
+      id: 2,
+      name: "Shatabliy",
+      slug: "shatabliy",
+      description: "Business and entrepreneurship articles covering startup strategies, business development, and industry analysis.",
+      imageUrl: "/images/seo/articles/shatabliy.png",
+      articleCount: "12+ Articles",
+      topics: ["Business Strategy", "Entrepreneurship", "Market Analysis", "Growth Hacking"]
+    },
+    {
+      id: 3,
+      name: "Dot Design",
+      slug: "dot-design",
+      description: "Design and creative industry articles focusing on design trends, creative processes, and digital innovation.",
+      imageUrl: "/images/seo/articles/dotdesign.png",
+      articleCount: "10+ Articles",
+      topics: ["Design Trends", "Creative Process", "Digital Innovation", "Brand Identity"]
     }
-    return 0;
-  });
-
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+  ];
 
   return (
     <div className="w-full px-[12%] py-10 scroll-mt-20">
@@ -47,157 +47,114 @@ export default function ArticlesPage() {
       </div>
       
       <p className="text-gray-700 font-Ovo max-w-3xl mb-8">
-        Discover my collection of SEO-optimized articles covering digital marketing, content strategy, and industry insights. Each article is crafted to provide value while improving search rankings and driving organic traffic.
+        Explore my collection of SEO-optimized articles organized by client categories. Each section contains specialized content crafted to drive organic traffic and establish authority in specific industries.
       </p>
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-2">
-          <span className="text-sm font-medium text-gray-700 mr-2 self-center">Category:</span>
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
-                selectedCategory === category
-                  ? 'bg-[#F2308D] text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Sort Filter */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-700">Sort by:</span>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:border-[#F2308D]"
+      {/* Article Categories Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {articleCategories.map((category) => (
+          <Link
+            key={category.id}
+            href={`/articles/${category.slug}`}
+            className="block border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
           >
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
-            <option value="readTime">Read Time</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Articles Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredData.map((article) => (
-          <article
-            key={article.id}
-            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
-          >
-            {/* Article Header */}
-            <div className="p-6 border-b border-gray-100">
-              <div className="flex items-center justify-between mb-3">
-                <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
-                  {article.category}
-                </span>
-                <div className="flex items-center gap-3 text-xs text-gray-500">
-                  <span>{formatDate(article.publishDate)}</span>
-                  <span>•</span>
-                  <span>{article.readTime}</span>
+            {/* Category Image */}
+            <div className="relative w-full h-64 bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden flex items-center justify-center">
+              {/* Try regular img tag first, fallback to placeholder */}
+              <img
+                src={category.imageUrl}
+                alt={category.name}
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                onError={(e) => {
+                  console.error('Image failed to load:', category.imageUrl);
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                }}
+                onLoad={(e) => {
+                  console.log('Image loaded successfully:', category.imageUrl);
+                }}
+              />
+              
+              {/* Fallback content */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center" style={{display: 'none'}}>
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
+                  <p className="text-lg font-medium text-gray-800">{category.name}</p>
+                  <p className="text-sm text-gray-600">Article Category</p>
                 </div>
               </div>
               
-              <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-gray-900 leading-tight">
-                {article.title}
-              </h3>
-              
-              <p className="text-sm text-gray-600 group-hover:text-gray-700 leading-relaxed">
-                {article.description}
-              </p>
+              {/* Article Count Badge */}
+              <div className="absolute top-4 right-4">
+                <span className="px-3 py-1 rounded-full text-xs font-medium bg-[#F2308D] text-white shadow-lg">
+                  {category.articleCount}
+                </span>
+              </div>
             </div>
 
-            {/* Article Content Preview */}
+            {/* Category Info */}
             <div className="p-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-gray-900">
+                {category.name}
+              </h3>
+              <p className="text-sm text-gray-600 mb-4 group-hover:text-gray-700 leading-relaxed">
+                {category.description}
+              </p>
+              
+              {/* Topics */}
               <div className="mb-4">
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">Article Excerpt:</h4>
-                <p className="text-sm text-gray-600 leading-relaxed italic">
-                  "{article.excerpt}"
-                </p>
-              </div>
-
-              {/* SEO Information */}
-              <div className="mb-4">
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">SEO Details:</h4>
-                <div className="grid grid-cols-2 gap-4 text-xs text-gray-600">
-                  <div>
-                    <span className="font-medium">Word Count:</span> {article.wordCount}
-                  </div>
-                  <div>
-                    <span className="font-medium">Content Type:</span> {article.contentType}
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <span className="text-xs font-medium text-gray-700">Target Audience:</span>
-                  <p className="text-xs text-gray-600">{article.targetAudience}</p>
-                </div>
-              </div>
-
-              {/* SEO Keywords */}
-              <div className="mb-4">
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">SEO Keywords:</h4>
+                <h4 className="text-xs font-semibold text-gray-700 mb-2">Key Topics:</h4>
                 <div className="flex flex-wrap gap-1">
-                  {article.seoKeywords.slice(0, 3).map((keyword, index) => (
+                  {category.topics.map((topic, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 rounded text-xs bg-green-100 text-green-700"
+                      className="px-2 py-1 rounded text-xs bg-blue-100 text-blue-700"
                     >
-                      {keyword}
-                    </span>
-                  ))}
-                  {article.seoKeywords.length > 3 && (
-                    <span className="px-2 py-1 rounded text-xs bg-gray-100 text-gray-600">
-                      +{article.seoKeywords.length - 3} more
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="mb-4">
-                <div className="flex flex-wrap gap-1">
-                  {article.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 rounded text-xs bg-gray-100 text-gray-600"
-                    >
-                      #{tag}
+                      {topic}
                     </span>
                   ))}
                 </div>
-              </div>
-
-              {/* Meta Description */}
-              <div className="mb-4 p-3 bg-gray-50 rounded">
-                <h4 className="text-xs font-semibold text-gray-700 mb-1">Meta Description:</h4>
-                <p className="text-xs text-gray-600 italic">
-                  "{article.metaDescription}"
-                </p>
               </div>
 
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 text-[#F2308D] font-medium text-sm">
-                  Read Full Article
+                  View Articles
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    <path d="M8 5v14l11-7z"/>
                   </svg>
                 </span>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
 
+      {/* Statistics Section */}
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8 mb-12">
+        <h3 className="text-2xl font-Ovo text-gray-800 mb-6 text-center">Portfolio Statistics</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-[#F2308D] mb-2">37+</div>
+            <div className="text-sm text-gray-600">Total Articles</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-[#F2308D] mb-2">3</div>
+            <div className="text-sm text-gray-600">Industry Categories</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-[#F2308D] mb-2">100%</div>
+            <div className="text-sm text-gray-600">SEO Optimized</div>
+          </div>
+        </div>
+      </div>
+
       {/* Call to Action */}
-      <div className="mt-12 text-center">
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8">
+      <div className="text-center">
+        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-8">
           <h3 className="text-2xl font-Ovo text-gray-800 mb-4">
             Need SEO-Optimized Articles?
           </h3>

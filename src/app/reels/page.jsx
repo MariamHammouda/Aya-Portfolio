@@ -57,37 +57,61 @@ export default function ReelsPage() {
       <div className="mb-12">
         <h3 className="text-2xl font-Ovo text-gray-800 mb-6 text-center">Featured Reel</h3>
         <div className="flex justify-center">
-          <div className="bg-white rounded-lg shadow-lg p-4 max-w-md">
-            <iframe 
-              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F548424947584258&show_text=false&width=500" 
-              width="500" 
-              height="600" 
-              style={{border: 'none', overflow: 'hidden'}} 
-              scrolling="no" 
-              frameBorder="0" 
-              allowFullScreen={true} 
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              className="w-full max-w-full"
-            />
+          <div className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] max-w-md">
+            {/* Facebook Reel Embed */}
+            <div className="bg-white p-4">
+              <div className="flex justify-center mb-4">
+                <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm w-full">
+                  <iframe 
+                    src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F548424947584258&show_text=false&width=350"
+                    width="350" 
+                    height="450" 
+                    style={{border: 'none', overflow: 'hidden'}} 
+                    scrolling="no" 
+                    frameBorder="0" 
+                    allowFullScreen={true} 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    className="w-full max-w-full"
+                  />
+                </div>
+              </div>
+              
+              {/* Fallback Link */}
+              <div className="text-center mb-2">
+                <a
+                  href="https://www.facebook.com/reel/548424947584258"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch on Facebook
+                </a>
+              </div>
+              
+              {/* Badge */}
+              <div className="text-center">
+                <span className="px-2 py-1 rounded-full text-xs font-medium bg-[#F2308D] text-white">
+                  Featured Reel
+                </span>
+              </div>
+            </div>
+
+            <div className="p-4 bg-gray-50">
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                Featured Reel
+              </h4>
+              <p className="text-sm text-gray-600 mb-3">
+                Watch this engaging reel showcasing creative content and storytelling.
+              </p>
+              
+              <div className="text-xs text-gray-500">
+                <span><strong>Platform:</strong> Facebook</span>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        {/* Fallback if embed doesn't work */}
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-500 mb-2">
-            If the reel doesn't display above, click below to watch on Facebook:
-          </p>
-          <a
-            href="https://www.facebook.com/reel/548424947584258"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] transition-colors duration-200"
-          >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            Watch Reel on Facebook
-          </a>
         </div>
       </div>
 
@@ -113,62 +137,49 @@ export default function ReelsPage() {
         {filteredData.map((reel) => (
           <div
             key={reel.id}
-            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
-            onClick={() => openReelModal(reel)}
+            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)]"
           >
-            {/* Reel Thumbnail */}
-            <div className="relative w-full h-80 bg-gray-100 overflow-hidden">
-              {!imageErrors.has(`reel-${reel.id}`) ? (
-                <Image
-                  src={reel.thumbnailUrl}
-                  alt={reel.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  onError={(e) => {
-                    console.error('Reel thumbnail failed to load:', reel.thumbnailUrl);
-                    setImageErrors(prev => new Set([...prev, `reel-${reel.id}`]));
-                  }}
-                />
-              ) : (
-                /* Fallback content if image fails to load */
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2">
-                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                    <p className="text-sm text-gray-600 font-medium">Reel Preview</p>
-                  </div>
+            {/* Facebook Reel Embed */}
+            <div className="bg-white p-4">
+              <div className="flex justify-center mb-4">
+                <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm w-full">
+                  <iframe 
+                    src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(reel.videoUrl)}&show_text=false&width=350`}
+                    width="350" 
+                    height="450" 
+                    style={{border: 'none', overflow: 'hidden'}} 
+                    scrolling="no" 
+                    frameBorder="0" 
+                    allowFullScreen={true} 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    className="w-full max-w-full"
+                  />
                 </div>
-              )}
+              </div>
               
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-16 h-16 bg-[#F2308D] bg-opacity-90 rounded-full flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              {/* Fallback Link */}
+              <div className="text-center mb-2">
+                <a
+                  href={reel.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                </div>
+                  Watch on Facebook
+                </a>
               </div>
               
-              {/* Category Badge */}
-              <div className="absolute top-3 left-3">
-                <span className="px-2 py-1 rounded-full text-xs font-medium bg-black bg-opacity-70 text-white">
+              {/* Badges */}
+              <div className="flex items-center justify-between mb-2">
+                <span className="px-2 py-1 rounded-full text-xs font-medium bg-[#F2308D] text-white">
                   {reel.category}
                 </span>
-              </div>
-              
-              {/* Duration Badge */}
-              <div className="absolute bottom-3 right-3">
-                <span className="px-2 py-1 rounded bg-black bg-opacity-70 text-white text-xs font-medium">
+                <span className="px-2 py-1 rounded bg-gray-200 text-gray-700 text-xs font-medium">
                   {reel.duration}
                 </span>
-              </div>
-
-              {/* Platform Badge */}
-              <div className="absolute top-3 right-3">
                 <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-500 text-white">
                   {reel.platform.split('/')[0]}
                 </span>
@@ -257,130 +268,84 @@ export default function ReelsPage() {
               </button>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
-              {/* Reel Preview */}
-              <div className="relative w-full h-96 lg:h-[500px] bg-gray-100 rounded-lg overflow-hidden">
-                {!imageErrors.has(`modal-${selectedReel.id}`) ? (
-                  <Image
-                    src={selectedReel.thumbnailUrl}
-                    alt={selectedReel.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    onError={(e) => {
-                      console.error('Modal reel failed to load:', selectedReel.thumbnailUrl);
-                      setImageErrors(prev => new Set([...prev, `modal-${selectedReel.id}`]));
-                    }}
-                  />
+            <div className="p-4">
+              {/* Facebook Post Embed Player */}
+              <div className="w-full bg-white rounded-lg overflow-hidden mb-4">
+                {selectedReel.videoUrl && selectedReel.videoUrl.includes('facebook.com') ? (
+                  <div className="flex justify-center">
+                    <div className="bg-white rounded-lg shadow-lg p-4 max-w-lg w-full">
+                      <iframe 
+                        src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(selectedReel.videoUrl)}&show_text=false&width=500`}
+                        width="500" 
+                        height="600" 
+                        style={{border: 'none', overflow: 'hidden'}} 
+                        scrolling="no" 
+                        frameBorder="0" 
+                        allowFullScreen={true} 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        className="w-full max-w-full"
+                      />
+                    </div>
+                  </div>
                 ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                  <div className="w-full h-64 sm:h-96 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
-                      <p className="text-lg font-medium">Reel Preview</p>
+                      <p className="text-lg font-medium mb-2">Reel Player</p>
+                      <p className="text-sm text-gray-600">
+                        Reel URL: {selectedReel.videoUrl || 'No reel URL provided'}
+                      </p>
                     </div>
                   </div>
                 )}
-                
-                {/* Watch Button Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                  <button
-                    onClick={() => handleWatchReel(selectedReel)}
-                    className="px-6 py-3 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] transition-colors duration-200 flex items-center gap-2"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    Watch on {selectedReel.platform.split('/')[0]}
-                  </button>
-                </div>
               </div>
-
-              {/* Reel Details */}
-              <div className="space-y-6">
+              
+              {/* Fallback if embed doesn't work */}
+              <div className="text-center mb-4">
+                <p className="text-sm text-gray-500 mb-2">
+                  If the reel doesn't display above, click below to watch on Facebook:
+                </p>
+                <a
+                  href={selectedReel.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] transition-colors duration-200"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Watch Reel on Facebook
+                </a>
+              </div>
+              
+              <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-2">Description</h4>
                   <p className="text-gray-600">{selectedReel.description}</p>
                 </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Client</h4>
-                    <p className="text-gray-600">{selectedReel.client}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Duration</h4>
-                    <p className="text-gray-600">{selectedReel.duration}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Platform</h4>
-                    <p className="text-gray-600">{selectedReel.platform}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">Created</h4>
-                    <p className="text-gray-600">{formatDate(selectedReel.createdDate)}</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Technical Specifications</h4>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div><span className="font-medium">Resolution:</span> {selectedReel.specifications.resolution}</div>
-                    <div><span className="font-medium">Format:</span> {selectedReel.specifications.format}</div>
-                    <div><span className="font-medium">Frame Rate:</span> {selectedReel.specifications.frameRate}</div>
-                    <div><span className="font-medium">Editing:</span> {selectedReel.specifications.editing}</div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Project Details</h4>
-                  <div className="space-y-1 text-sm text-gray-600">
-                    <div><span className="font-medium">Shoot Duration:</span> {selectedReel.projectDetails.shootDuration}</div>
-                    <div><span className="font-medium">Editing Time:</span> {selectedReel.projectDetails.editingTime}</div>
-                    <div><span className="font-medium">Deliverables:</span> {selectedReel.projectDetails.deliverables}</div>
-                    <div><span className="font-medium">Usage:</span> {selectedReel.projectDetails.usage}</div>
-                  </div>
-                </div>
-
-                {selectedReel.performance && (
-                  <div>
-                    <h4 className="font-semibold text-gray-800 mb-2">Performance Metrics</h4>
-                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-                      <div><span className="font-medium">Views:</span> {selectedReel.performance.views}</div>
-                      <div><span className="font-medium">Engagement:</span> {selectedReel.performance.engagement}</div>
-                      <div><span className="font-medium">Shares:</span> {selectedReel.performance.shares}</div>
-                      <div><span className="font-medium">Platform:</span> {selectedReel.performance.platform}</div>
-                    </div>
-                  </div>
-                )}
-
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Techniques Used</h4>
-                  <ul className="space-y-1 text-sm text-gray-600">
-                    {selectedReel.techniques.map((technique, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <span className="w-1 h-1 bg-[#F2308D] rounded-full"></span>
-                        {technique}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Tags</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedReel.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                
+                <div className="flex gap-4 pt-4">
+                  <button
+                    onClick={closeReelModal}
+                    className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  >
+                    Close
+                  </button>
+                  <a
+                    href={selectedReel.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] flex items-center gap-2"
+                  >
+                    View on Facebook
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
