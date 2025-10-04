@@ -7,63 +7,151 @@ import { useState } from "react";
 export default function ShatabliyArticlesPage() {
   const [sortBy, setSortBy] = useState("newest");
 
-  // Sample articles data for Shatabliy
+  // Real articles data for Shatabliy
   const articles = [
     {
       id: 1,
-      title: "Startup Growth Strategies: From Idea to Scale",
-      description: "Essential strategies for scaling your startup from initial concept to market leadership.",
-      excerpt: "Building a successful startup requires more than just a great idea. It demands strategic planning, market understanding, and execution excellence...",
-      publishDate: "2024-03-10",
-      readTime: "12 min read",
-      wordCount: "3,500",
-      contentType: "Business Strategy",
-      targetAudience: "Entrepreneurs and startup founders",
-      seoKeywords: ["startup growth", "business scaling", "entrepreneurship", "startup strategy"],
-      tags: ["Startup", "Growth", "Strategy"],
-      metaDescription: "Learn proven strategies for scaling your startup from idea to market leadership with actionable insights."
+      title: "الفرق بين أرضيات الباركيه والسيراميك",
+      titleEn: "The Difference Between Parquet and Ceramic Flooring",
+      description: "مقارنة شاملة بين أرضيات الباركيه والسيراميك لمساعدتك في اختيار الأنسب لمنزلك.",
+      excerpt: "عند تجديد المنزل أو بناء منزل جديد، يواجه الكثيرون حيرة في اختيار نوع الأرضيات المناسبة...",
+      publishDate: "2024-03-15",
+      readTime: "8 min read",
+      wordCount: "2,400",
+      contentType: "Home Improvement Guide",
+      targetAudience: "أصحاب المنازل والمهتمين بالديكور",
+      seoKeywords: ["أرضيات الباركيه", "أرضيات السيراميك", "مقارنة الأرضيات", "ديكور المنزل"],
+      tags: ["Flooring", "Home Decor", "Interior Design"],
+      metaDescription: "دليل شامل للمقارنة بين أرضيات الباركيه والسيراميك ومساعدتك في الاختيار الأمثل.",
+      articleUrl: "https://shatabliy.com/%d8%a7%d9%84%d9%81%d8%b1%d9%82-%d8%a8%d9%8a%d9%86-%d8%a7%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa-%d8%a7%d9%84%d8%a8%d8%a7%d8%b1%d9%83%d9%8a%d9%87-%d9%88-%d8%a7%d9%84%d8%b3%d9%8a%d8%b1%d8%a7%d9%85%d9%8a%d9%83/"
     },
     {
       id: 2,
-      title: "Digital Marketing for Small Businesses: A Complete Guide",
-      description: "Comprehensive guide to digital marketing strategies that work for small businesses on any budget.",
-      excerpt: "Small businesses face unique challenges in the digital marketing landscape. Limited budgets and resources require smart, targeted approaches...",
-      publishDate: "2024-02-25",
-      readTime: "15 min read",
-      wordCount: "4,200",
-      contentType: "Marketing Guide",
-      targetAudience: "Small business owners and marketers",
-      seoKeywords: ["digital marketing", "small business marketing", "online marketing", "marketing strategy"],
-      tags: ["Marketing", "Small Business", "Digital"],
-      metaDescription: "Complete guide to digital marketing for small businesses with budget-friendly strategies and tactics."
+      title: "مزايا أرضيات الباركيه",
+      titleEn: "Advantages of Parquet Flooring",
+      description: "تعرف على المزايا المتعددة لأرضيات الباركيه وسبب كونها خياراً مفضلاً للكثيرين.",
+      excerpt: "أرضيات الباركيه تعتبر من أكثر أنواع الأرضيات أناقة وجمالاً، وتتميز بالعديد من المزايا...",
+      publishDate: "2024-03-12",
+      readTime: "6 min read",
+      wordCount: "1,800",
+      contentType: "Flooring Guide",
+      targetAudience: "المهتمين بأرضيات الباركيه وأصحاب المنازل",
+      seoKeywords: ["مزايا الباركيه", "أرضيات خشبية", "ديكور منزلي", "أرضيات فاخرة"],
+      tags: ["Parquet", "Wood Flooring", "Home Design"],
+      metaDescription: "اكتشف مزايا أرضيات الباركيه المتعددة وسبب كونها الخيار الأمثل للمنازل العصرية.",
+      articleUrl: "https://shatabliy.com/%d9%85%d8%b2%d8%a7%d9%8a%d8%a7-%d8%a3%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa-%d8%a7%d9%84%d8%a8%d8%a7%d8%b1%d9%83%d9%8a%d9%87/"
     },
     {
       id: 3,
-      title: "E-commerce Trends 2024: What Businesses Need to Know",
-      description: "Latest e-commerce trends and technologies shaping the future of online retail.",
-      excerpt: "The e-commerce landscape continues to evolve rapidly, with new technologies and consumer behaviors driving significant changes...",
-      publishDate: "2024-01-15",
-      readTime: "9 min read",
-      wordCount: "2,800",
-      contentType: "Industry Analysis",
-      targetAudience: "E-commerce professionals and business owners",
-      seoKeywords: ["e-commerce trends", "online retail", "digital commerce", "retail technology"],
-      tags: ["E-commerce", "Trends", "Technology"],
-      metaDescription: "Discover the latest e-commerce trends and technologies that will shape online retail in 2024."
+      title: "أفضل أرضيات المطابخ",
+      titleEn: "Best Kitchen Flooring Options",
+      description: "دليل شامل لاختيار أفضل أنواع الأرضيات للمطابخ مع مراعاة المتانة والعملية.",
+      excerpt: "المطبخ من أكثر الأماكن استخداماً في المنزل، لذلك يحتاج إلى أرضيات متينة وعملية...",
+      publishDate: "2024-03-08",
+      readTime: "7 min read",
+      wordCount: "2,100",
+      contentType: "Kitchen Design",
+      targetAudience: "أصحاب المنازل ومصممي المطابخ",
+      seoKeywords: ["أرضيات المطابخ", "ديكور المطبخ", "أرضيات مقاومة للماء", "تصميم المطابخ"],
+      tags: ["Kitchen", "Flooring", "Interior Design"],
+      metaDescription: "اختر أفضل أرضيات للمطبخ مع دليلنا الشامل للأنواع المتينة والعملية.",
+      articleUrl: "https://shatabliy.com/%d8%a3%d9%81%d8%b6%d9%84-%d8%a3%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa-%d8%a7%d9%84%d9%85%d8%b7%d8%a7%d8%a8%d8%ae/"
     },
     {
       id: 4,
-      title: "Building a Strong Brand Identity in the Digital Age",
-      description: "How to create and maintain a compelling brand identity that resonates with modern consumers.",
-      excerpt: "In today's digital-first world, brand identity extends far beyond logos and color schemes. It encompasses every touchpoint...",
-      publishDate: "2023-12-20",
-      readTime: "11 min read",
+      title: "أفضل أنواع الأرضيات للمنزل",
+      titleEn: "Best Types of Home Flooring",
+      description: "دليل شامل لأفضل أنواع الأرضيات المنزلية مع مقارنة المزايا والعيوب لكل نوع.",
+      excerpt: "اختيار الأرضيات المناسبة للمنزل قرار مهم يؤثر على الجمالية والوظائف العملية...",
+      publishDate: "2024-03-05",
+      readTime: "10 min read",
+      wordCount: "3,000",
+      contentType: "Home Design Guide",
+      targetAudience: "أصحاب المنازل والمقاولين",
+      seoKeywords: ["أفضل أرضيات منزلية", "أنواع الأرضيات", "ديكور المنزل", "تجديد المنزل"],
+      tags: ["Home Flooring", "Interior Design", "Home Renovation"],
+      metaDescription: "دليل شامل لأفضل أنواع الأرضيات المنزلية مع مقارنة تفصيلية لمساعدتك في الاختيار.",
+      articleUrl: "https://shatabliy.com/%d8%a3%d9%81%d8%b6%d9%84-%d8%a3%d9%86%d9%88%d8%a7%d8%b9-%d8%a7%d9%84%d8%a3%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa-%d9%84%d9%84%d9%85%d9%86%d8%b2%d9%84/"
+    },
+    {
+      id: 5,
+      title: "كيف تختار مقاول التشطيبات؟",
+      titleEn: "How to Choose a Finishing Contractor?",
+      description: "نصائح مهمة لاختيار مقاول التشطيبات المناسب لضمان جودة العمل وإنجازه في الوقت المحدد.",
+      excerpt: "اختيار مقاول التشطيبات المناسب خطوة حاسمة في نجاح مشروع تجديد أو بناء المنزل...",
+      publishDate: "2024-03-02",
+      readTime: "9 min read",
+      wordCount: "2,700",
+      contentType: "Construction Guide",
+      targetAudience: "أصحاب المنازل والمقاولين",
+      seoKeywords: ["مقاول تشطيبات", "اختيار المقاول", "تشطيبات المنازل", "مقاولات البناء"],
+      tags: ["Construction", "Contractors", "Home Renovation"],
+      metaDescription: "تعلم كيفية اختيار مقاول التشطيبات المناسب مع نصائح عملية لضمان جودة العمل.",
+      articleUrl: "https://shatabliy.com/%d9%83%d9%8a%d9%81-%d8%aa%d8%ae%d8%aa%d8%a7%d8%b1-%d9%85%d9%82%d8%a7%d9%88%d9%84-%d8%a7%d9%84%d8%aa%d8%b4%d8%b7%d9%8a%d8%a8%d8%a7%d8%aa%d8%9f/"
+    },
+    {
+      id: 6,
+      title: "أرخص أنواع الأرضيات",
+      titleEn: "Cheapest Types of Flooring",
+      description: "دليل للأرضيات الاقتصادية التي تجمع بين الجودة والسعر المناسب لميزانيتك.",
+      excerpt: "ليس من الضروري أن تكون الأرضيات الجيدة باهظة الثمن، هناك خيارات اقتصادية ممتازة...",
+      publishDate: "2024-02-28",
+      readTime: "6 min read",
+      wordCount: "1,900",
+      contentType: "Budget Guide",
+      targetAudience: "أصحاب الميزانيات المحدودة",
+      seoKeywords: ["أرضيات رخيصة", "أرضيات اقتصادية", "ميزانية محدودة", "أرضيات بأسعار مناسبة"],
+      tags: ["Budget Flooring", "Affordable Options", "Cost-Effective"],
+      metaDescription: "اكتشف أرخص أنواع الأرضيات عالية الجودة التي تناسب ميزانيتك المحدودة.",
+      articleUrl: "https://shatabliy.com/%d8%a3%d8%b1%d8%ae%d8%b5-%d8%a3%d9%86%d9%88%d8%a7%d8%b9-%d8%a7%d9%84%d8%a3%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa/"
+    },
+    {
+      id: 7,
+      title: "أفضل أنواع رخام الأرضيات",
+      titleEn: "Best Types of Marble Flooring",
+      description: "دليل شامل لأفضل أنواع رخام الأرضيات مع مقارنة الأسعار والجودة والمتانة.",
+      excerpt: "الرخام من أفخر أنواع الأرضيات وأكثرها جمالاً، ولكن اختيار النوع المناسب يتطلب معرفة...",
+      publishDate: "2024-02-25",
+      readTime: "8 min read",
+      wordCount: "2,500",
+      contentType: "Luxury Flooring",
+      targetAudience: "المهتمين بالأرضيات الفاخرة",
+      seoKeywords: ["رخام الأرضيات", "أنواع الرخام", "أرضيات فاخرة", "رخام طبيعي"],
+      tags: ["Marble", "Luxury Flooring", "Natural Stone"],
+      metaDescription: "تعرف على أفضل أنواع رخام الأرضيات واختر الأنسب لمنزلك من حيث الجودة والسعر.",
+      articleUrl: "https://shatabliy.com/%d8%a3%d9%81%d8%b6%d9%84-%d8%a3%d9%86%d9%88%d8%a7%d8%b9-%d8%b1%d8%ae%d8%a7%d9%85-%d8%a7%d9%84%d8%a3%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa/"
+    },
+    {
+      id: 8,
+      title: "أفضل أنواع سيراميك الأرضيات",
+      titleEn: "Best Types of Ceramic Flooring",
+      description: "دليل تفصيلي لأفضل أنواع سيراميك الأرضيات مع نصائح الاختيار والتركيب.",
+      excerpt: "السيراميك من أكثر أنواع الأرضيات شيوعاً واستخداماً لمزاياه المتعددة وسهولة صيانته...",
+      publishDate: "2024-02-22",
+      readTime: "7 min read",
+      wordCount: "2,200",
+      contentType: "Ceramic Guide",
+      targetAudience: "أصحاب المنازل والمقاولين",
+      seoKeywords: ["سيراميك الأرضيات", "أنواع السيراميك", "بلاط السيراميك", "أرضيات سيراميك"],
+      tags: ["Ceramic", "Tiles", "Flooring Options"],
+      metaDescription: "اختر أفضل أنواع سيراميك الأرضيات مع دليلنا الشامل للأنواع والمزايا.",
+      articleUrl: "https://shatabliy.com/%d8%a3%d9%81%d8%b6%d9%84-%d8%a3%d9%86%d9%88%d8%a7%d8%b9-%d8%b3%d9%8a%d8%b1%d8%a7%d9%85%d9%8a%d9%83-%d8%a7%d9%84%d8%a3%d8%b1%d8%b6%d9%8a%d8%a7%d8%aa/"
+    },
+    {
+      id: 9,
+      title: "فن المقاول في التشطيبات",
+      titleEn: "The Art of Contracting in Finishing",
+      description: "نظرة عميقة على فن وحرفية المقاولين في التشطيبات وأسرار الجودة العالية.",
+      excerpt: "التشطيبات ليست مجرد عمل تقني، بل فن يتطلب خبرة ومهارة وذوق رفيع...",
+      publishDate: "2024-02-18",
+      readTime: "10 min read",
       wordCount: "3,100",
-      contentType: "Branding Guide",
-      targetAudience: "Marketing professionals and business owners",
-      seoKeywords: ["brand identity", "digital branding", "brand strategy", "brand building"],
-      tags: ["Branding", "Identity", "Strategy"],
-      metaDescription: "Learn how to build a strong brand identity that connects with modern consumers in the digital age."
+      contentType: "Professional Insight",
+      targetAudience: "المقاولين والمهتمين بالتشطيبات",
+      seoKeywords: ["فن التشطيبات", "حرفية المقاولين", "جودة التشطيبات", "مهارات البناء"],
+      tags: ["Craftsmanship", "Professional Skills", "Quality Work"],
+      metaDescription: "تعرف على فن المقاول في التشطيبات وأسرار تحقيق الجودة العالية في العمل.",
+      articleUrl: "https://shatabliy.com/%d9%81%d9%86-%d8%a7%d9%84%d9%85%d9%82%d8%a7%d9%88%d9%84-%d9%81%d9%8a-%d8%a7%d9%84%d8%aa%d8%b4%d8%b7%d9%8a%d8%a8%d8%a7%d8%aa/"
     }
   ];
 
@@ -147,9 +235,12 @@ export default function ShatabliyArticlesPage() {
       {/* Articles Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {sortedArticles.map((article) => (
-          <article
+          <a
             key={article.id}
-            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
+            href={article.articleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
           >
             {/* Article Header */}
             <div className="p-6 border-b border-gray-100">
@@ -245,7 +336,7 @@ export default function ShatabliyArticlesPage() {
                 </span>
               </div>
             </div>
-          </article>
+          </a>
         ))}
       </div>
 
