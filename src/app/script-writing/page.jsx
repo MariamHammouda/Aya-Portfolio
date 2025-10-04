@@ -61,40 +61,34 @@ export default function ScriptWritingPage() {
                 className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-black hover:-translate-y-1 duration-500 cursor-pointer hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
                 onClick={() => handleProgramClick(program)}
               >
-                <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
-                  {!imageErrors.has(`program-${program.id}`) ? (
-                    <Image
-                      src={program.programThumbnail}
-                      alt={program.programTitle}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      priority={program.id === 1}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      onError={(e) => {
-                        console.error('Image failed to load:', program.programThumbnail);
-                        console.error('Error details:', e);
-                        console.error('Program ID:', program.id);
-                        setImageErrors(prev => new Set([...prev, `program-${program.id}`]));
-                      }}
-                    />
-                  ) : (
-                    /* Fallback content if image fails to load */
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2">
-                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                          </svg>
-                        </div>
-                        <p className="text-sm text-gray-600 font-medium">Program Cover</p>
-                      </div>
-                    </div>
-                  )}
+                <div className="relative w-full h-48 bg-gradient-to-br from-purple-100 to-pink-100 overflow-hidden flex items-center justify-center">
+                  {/* Try regular img tag first, fallback to placeholder */}
+                  <img
+                    src={program.programThumbnail}
+                    alt={program.programTitle}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      console.error('Image failed to load:', program.programThumbnail);
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                    onLoad={(e) => {
+                      console.log('Image loaded successfully:', program.programThumbnail);
+                    }}
+                  />
                   
-                  {/* Overlay for better text readability - only show if image loads */}
-                  {!imageErrors.has(`program-${program.id}`) && (
-                    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                  )}
+                  {/* Fallback content */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center" style={{display: 'none'}}>
+                    <div className="text-center">
+                      <div className="w-16 h-16 bg-[#F2308D] rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                      <p className="text-sm text-gray-600 font-medium">{program.programTitle}</p>
+                      <p className="text-xs text-gray-500 mt-1">Program Cover</p>
+                    </div>
+                  </div>
                   
                   <div className="absolute top-3 right-3">
                     <span className="px-2 py-1 rounded-full text-xs font-medium bg-purple-500 text-white shadow-lg">
