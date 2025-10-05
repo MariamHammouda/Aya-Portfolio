@@ -25,12 +25,30 @@ export default function ArticlesPage() {
     },
     {
       id: 3,
-      name: "Dot Design",
+      name: "Dot Design (chatbot)",
       slug: "dot-design",
       description: "Design and creative industry articles focusing on design trends, creative processes, and digital innovation.",
       imageUrl: "/images/seo/articles/dotdesign.png",
-      articleCount: "10+ Articles",
+      articleCount: "5 Articles",
       topics: ["Design Trends", "Creative Process", "Digital Innovation", "Brand Identity"]
+    },
+    {
+      id: 4,
+      name: "Design Studio",
+      slug: "design-studio",
+      description: "Digital marketing articles covering social media strategies, content marketing, email marketing, and modern digital advertising techniques.",
+      imageUrl: "/images/seo/articles/design.png",
+      articleCount: "7 Articles",
+      topics: ["Social Media Marketing", "Content Marketing", "Email Marketing", "Digital Advertising"]
+    },
+    {
+      id: 5,
+      name: "Fashion Models",
+      slug: "fashion-models",
+      description: "Fashion and modeling industry articles covering portfolio development, industry insights, brand collaborations, and professional modeling guidance.",
+      imageUrl: "/images/seo/articles/models.png",
+      articleCount: "6 Articles",
+      topics: ["Portfolio Development", "Industry Insights", "Brand Collaborations", "Professional Modeling"]
     }
   ];
 
@@ -138,11 +156,11 @@ export default function ArticlesPage() {
         <h3 className="text-2xl font-Ovo text-gray-800 mb-6 text-center">Portfolio Statistics</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#F2308D] mb-2">37+</div>
+            <div className="text-3xl font-bold text-[#F2308D] mb-2">51+</div>
             <div className="text-sm text-gray-600">Total Articles</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-[#F2308D] mb-2">3</div>
+            <div className="text-3xl font-bold text-[#F2308D] mb-2">5</div>
             <div className="text-sm text-gray-600">Industry Categories</div>
           </div>
           <div className="text-center">

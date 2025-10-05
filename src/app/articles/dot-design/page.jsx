@@ -7,77 +7,82 @@ import { useState } from "react";
 export default function DotDesignArticlesPage() {
   const [sortBy, setSortBy] = useState("newest");
 
-  // Sample articles data for Dot Design
+  // Dot Design (chatbot) articles data
   const articles = [
     {
       id: 1,
-      title: "Design Trends 2024: What's Shaping the Creative Industry",
-      description: "Explore the latest design trends that are defining the creative landscape in 2024.",
-      excerpt: "The design world is constantly evolving, with new trends emerging that reflect changing user preferences and technological advances...",
-      publishDate: "2024-03-08",
-      readTime: "10 min read",
-      wordCount: "3,000",
-      contentType: "Design Trends",
-      targetAudience: "Designers and creative professionals",
-      seoKeywords: ["design trends 2024", "graphic design", "creative industry", "design innovation"],
-      tags: ["Design", "Trends", "Innovation"],
-      metaDescription: "Discover the top design trends of 2024 that are shaping the creative industry and inspiring designers worldwide."
+      title: "ثورة التواصل في التجارة الإلكترونية",
+      description: "كيف تحدث تقنيات التواصل الحديثة ثورة في مجال التجارة الإلكترونية وتحسن تجربة العملاء.",
+      excerpt: "التجارة الإلكترونية تشهد تطوراً مستمراً في طرق التواصل مع العملاء، من الشات بوت إلى الذكاء الاصطناعي...",
+      publishDate: "2024-04-15",
+      readTime: "8 min read",
+      wordCount: "2,800",
+      contentType: "E-commerce Technology",
+      targetAudience: "E-commerce business owners and developers",
+      seoKeywords: ["التجارة الإلكترونية", "تقنيات التواصل", "خدمة العملاء", "الشات بوت"],
+      tags: ["E-commerce", "Communication", "Technology"],
+      metaDescription: "اكتشف كيف تحدث تقنيات التواصل الحديثة ثورة في التجارة الإلكترونية وتحسن تجربة العملاء.",
+      articleUrl: "https://bot.dotdesign.me/%d8%ab%d9%88%d8%b1%d8%a9-%d8%a7%d9%84%d8%aa%d9%88%d8%a7%d8%b5%d9%84-%d9%81%d9%8a-%d8%a7%d9%84%d8%aa%d8%ac%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%a5%d9%84%d9%83%d8%aa%d8%b1%d9%88%d9%86%d9%8a%d8%a9/"
     },
     {
       id: 2,
-      title: "The Psychology of Color in Brand Design",
-      description: "Understanding how color psychology influences brand perception and consumer behavior.",
-      excerpt: "Color is one of the most powerful tools in a designer's arsenal, capable of evoking emotions and influencing decisions...",
-      publishDate: "2024-02-22",
-      readTime: "8 min read",
-      wordCount: "2,400",
-      contentType: "Design Psychology",
-      targetAudience: "Brand designers and marketers",
-      seoKeywords: ["color psychology", "brand design", "visual identity", "design theory"],
-      tags: ["Psychology", "Branding", "Color"],
-      metaDescription: "Learn how color psychology impacts brand design and consumer behavior in this comprehensive guide."
+      title: "التقنيات والأدوات الشائعة المستخدمة",
+      description: "دليل شامل للتقنيات والأدوات الحديثة المستخدمة في تطوير الحلول الرقمية والشات بوت.",
+      excerpt: "في عالم التكنولوجيا المتطور، تتنوع الأدوات والتقنيات المستخدمة في تطوير الحلول الذكية...",
+      publishDate: "2024-04-10",
+      readTime: "12 min read",
+      wordCount: "3,200",
+      contentType: "Technology Guide",
+      targetAudience: "Developers and tech professionals",
+      seoKeywords: ["تقنيات البرمجة", "أدوات التطوير", "الشات بوت", "التكنولوجيا"],
+      tags: ["Technology", "Development", "Tools"],
+      metaDescription: "تعرف على أحدث التقنيات والأدوات المستخدمة في تطوير الحلول الرقمية والشات بوت.",
+      articleUrl: "https://bot.dotdesign.me/%d8%a7%d9%84%d8%aa%d9%82%d9%86%d9%8a%d8%a7%d8%aa-%d9%88%d8%a7%d9%84%d8%a3%d8%af%d9%88%d8%a7%d8%aa-%d8%a7%d9%84%d8%b4%d8%a7%d8%a6%d8%b9%d8%a9-%d8%a7%d9%84%d9%85%d8%b3%d8%aa%d8%ae%d8%af%d9%85%d8%a9/"
     },
     {
       id: 3,
-      title: "Minimalist Design: Less is More in Digital Interfaces",
-      description: "The principles and benefits of minimalist design in creating effective digital experiences.",
-      excerpt: "Minimalist design has become a dominant force in digital interface design, emphasizing clarity and functionality...",
-      publishDate: "2024-01-18",
-      readTime: "7 min read",
-      wordCount: "2,100",
-      contentType: "UI/UX Design",
-      targetAudience: "UI/UX designers and developers",
-      seoKeywords: ["minimalist design", "UI design", "user experience", "interface design"],
-      tags: ["Minimalism", "UI/UX", "Digital"],
-      metaDescription: "Explore the principles of minimalist design and how it creates better digital user experiences."
+      title: "الشات بوت والمبيعات الذكية",
+      description: "كيف يمكن للشات بوت أن يحدث نقلة نوعية في استراتيجيات المبيعات والتسويق الرقمي.",
+      excerpt: "الشات بوت أصبح أداة أساسية في عالم المبيعات الحديثة، حيث يوفر تفاعلاً فورياً مع العملاء...",
+      publishDate: "2024-04-05",
+      readTime: "10 min read",
+      wordCount: "2,900",
+      contentType: "Sales Technology",
+      targetAudience: "Sales professionals and marketers",
+      seoKeywords: ["الشات بوت", "المبيعات الذكية", "التسويق الرقمي", "خدمة العملاء"],
+      tags: ["Chatbot", "Sales", "Marketing"],
+      metaDescription: "اكتشف كيف يمكن للشات بوت أن يحسن استراتيجيات المبيعات ويزيد من كفاءة التسويق الرقمي.",
+      articleUrl: "https://bot.dotdesign.me/%d8%a7%d9%84%d8%b4%d8%a7%d8%aa-%d8%a8%d9%88%d8%aa-%d9%88%d8%a7%d9%84%d9%85%d8%a8%d9%8a%d8%b9%d8%a7%d8%aa-%d8%a7%d9%84%d8%b0%d9%83%d9%8a%d8%a9/"
     },
     {
       id: 4,
-      title: "Typography in Web Design: Choosing the Right Fonts",
-      description: "A comprehensive guide to selecting and implementing typography for web design projects.",
-      excerpt: "Typography plays a crucial role in web design, affecting readability, user experience, and brand perception...",
-      publishDate: "2023-12-15",
-      readTime: "12 min read",
-      wordCount: "3,600",
-      contentType: "Typography Guide",
-      targetAudience: "Web designers and developers",
-      seoKeywords: ["web typography", "font selection", "web design", "typography guide"],
-      tags: ["Typography", "Web Design", "Fonts"],
-      metaDescription: "Master web typography with this comprehensive guide to choosing and implementing fonts for better design."
+      title: "تجربة العملاء في التجارة إلى الأمام",
+      description: "استراتيجيات متقدمة لتحسين تجربة العملاء وزيادة رضاهم في البيئة التجارية الرقمية.",
+      excerpt: "تجربة العملاء هي محور نجاح أي عمل تجاري في العصر الرقمي، وتتطلب استراتيجيات مبتكرة...",
+      publishDate: "2024-03-28",
+      readTime: "9 min read",
+      wordCount: "2,600",
+      contentType: "Customer Experience",
+      targetAudience: "Business owners and customer service managers",
+      seoKeywords: ["تجربة العملاء", "رضا العملاء", "التجارة الرقمية", "خدمة العملاء"],
+      tags: ["Customer Experience", "Business", "Digital"],
+      metaDescription: "تعلم كيفية تحسين تجربة العملاء وزيادة رضاهم من خلال استراتيجيات مبتكرة في التجارة الرقمية.",
+      articleUrl: "https://bot.dotdesign.me/%d8%aa%d8%ac%d8%b1%d8%a8%d8%a9-%d8%a7%d9%84%d8%b9%d9%85%d9%84%d8%a7%d8%a1-%d9%81%d9%8a-%d8%a7%d9%84%d8%aa%d8%ac%d8%a7%d8%b1%d8%a9-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d8%a3%d9%85%d8%a7%d9%85/"
     },
     {
       id: 5,
-      title: "Sustainable Design: Creating Eco-Friendly Visual Solutions",
-      description: "How designers can contribute to sustainability through environmentally conscious design practices.",
-      excerpt: "As environmental awareness grows, designers have a responsibility to consider the ecological impact of their work...",
-      publishDate: "2023-11-28",
-      readTime: "9 min read",
-      wordCount: "2,700",
-      contentType: "Sustainable Design",
-      targetAudience: "Designers and creative professionals",
-      seoKeywords: ["sustainable design", "eco-friendly design", "green design", "environmental design"],
-      tags: ["Sustainability", "Environment", "Ethics"],
-      metaDescription: "Learn how to create sustainable, eco-friendly designs that minimize environmental impact while maximizing visual impact."
+      title: "تحسين خدماتك الأعمالية",
+      description: "دليل شامل لتطوير وتحسين الخدمات التجارية باستخدام التقنيات الحديثة والحلول الذكية.",
+      excerpt: "تحسين الخدمات التجارية يتطلب فهماً عميقاً لاحتياجات العملاء واستخدام التقنيات المناسبة...",
+      publishDate: "2024-03-20",
+      readTime: "11 min read",
+      wordCount: "3,100",
+      contentType: "Business Improvement",
+      targetAudience: "Business owners and service providers",
+      seoKeywords: ["تحسين الخدمات", "الأعمال التجارية", "التطوير", "الحلول الذكية"],
+      tags: ["Business", "Services", "Improvement"],
+      metaDescription: "اكتشف كيفية تطوير وتحسين خدماتك التجارية باستخدام أحدث التقنيات والحلول الذكية.",
+      articleUrl: "https://bot.dotdesign.me/%d8%aa%d8%ad%d8%b3%d9%8a%d9%86-%d8%ae%d8%af%d9%85%d8%a7%d8%aa%d9%83-%d8%a7%d9%84%d8%a3%d8%b9%d9%85%d8%a7%d9%84%d9%8a%d8%a9/"
     }
   ];
 
@@ -104,7 +109,7 @@ export default function DotDesignArticlesPage() {
   return (
     <div className="w-full px-[12%] py-10 scroll-mt-20">
       <div className="flex items-center justify-between gap-4 mb-6">
-        <h2 className="text-3xl sm:text-4xl font-Ovo">Dot Design Articles</h2>
+        <h2 className="text-3xl sm:text-4xl font-Ovo">Dot Design (chatbot) Articles</h2>
         <Link
           href="/articles"
           className="px-4 py-2 border border-gray-300 rounded-full text-sm hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] duration-200"
@@ -125,12 +130,12 @@ export default function DotDesignArticlesPage() {
             />
           </div>
           <div>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Dot Design</h3>
+            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Dot Design (chatbot)</h3>
             <p className="text-gray-600 mb-3">
-              Design and creative industry articles focusing on design trends, creative processes, and digital innovation.
+              Chatbot and digital innovation articles focusing on e-commerce technology, customer experience, and smart business solutions.
             </p>
             <div className="flex flex-wrap gap-2">
-              {["Design Trends", "Creative Process", "Digital Innovation", "Brand Identity"].map((topic, index) => (
+              {["Chatbot Technology", "E-commerce", "Customer Experience", "Digital Innovation", "Smart Solutions"].map((topic, index) => (
                 <span key={index} className="px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
                   {topic}
                 </span>
@@ -141,7 +146,7 @@ export default function DotDesignArticlesPage() {
       </div>
       
       <p className="text-gray-700 font-Ovo max-w-3xl mb-8">
-        Explore design and creative industry articles written for Dot Design. Each article provides insights into design trends, creative processes, and innovative approaches to visual communication.
+        Explore chatbot and digital innovation articles written for Dot Design. Each article provides insights into e-commerce technology, customer experience optimization, and smart business solutions using chatbot technology.
       </p>
 
       {/* Sort Filter */}
@@ -163,13 +168,14 @@ export default function DotDesignArticlesPage() {
         {sortedArticles.map((article) => (
           <article
             key={article.id}
-            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group"
+            className="border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 duration-500 hover:bg-[var(--color-light-hover)] hover:border-[var(--color-light-hover)] group cursor-pointer"
+            onClick={() => article.articleUrl && window.open(article.articleUrl, '_blank', 'noopener,noreferrer')}
           >
             {/* Article Header */}
             <div className="p-6 border-b border-gray-100">
               <div className="flex items-center justify-between mb-3">
                 <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
-                  Design Content
+                  {article.contentType || "Design Content"}
                 </span>
                 <div className="flex items-center gap-3 text-xs text-gray-500">
                   <span>{formatDate(article.publishDate)}</span>
@@ -252,9 +258,13 @@ export default function DotDesignArticlesPage() {
 
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 text-[#F2308D] font-medium text-sm">
-                  Read Full Article
+                  {article.articleUrl ? "Read on Dot Design" : "Read Full Article"}
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    {article.articleUrl ? (
+                      <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/>
+                    ) : (
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    )}
                   </svg>
                 </span>
               </div>
@@ -267,17 +277,17 @@ export default function DotDesignArticlesPage() {
       <div className="mt-12 text-center">
         <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-8">
           <h3 className="text-2xl font-Ovo text-gray-800 mb-4">
-            Need Design Content Writing?
+            Need Chatbot & E-commerce Content Writing?
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Specialized in creating engaging design content that inspires creativity and establishes design authority. 
-            Every article is crafted for design professionals and optimized for search visibility.
+            Specialized in creating engaging chatbot and e-commerce content that drives customer engagement and business growth. 
+            Every article is crafted for technology professionals and optimized for search visibility.
           </p>
           <Link
             href="/#contact"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#F2308D] text-white rounded-lg hover:bg-[#C1277A] transition-colors duration-200"
           >
-            Get Design Articles
+            Get Chatbot Articles
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>

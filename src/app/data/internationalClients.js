@@ -35,4 +35,58 @@ export const internationalClients = [
     imageUrl: "/images/international-clients-images/img6.jpg",
     facebookUrl: "https://www.facebook.com/canadian.travel",
   },
+  {
+    name: "German Automotive Brand",
+    description: "Premium automotive company with precision-focused copywriting for international luxury car markets",
+    imageUrl: "/images/international-clients-images/img7.jpg",
+    facebookUrl: "https://www.facebook.com/german.automotive",
+  },
+  {
+    name: "Brazilian Coffee Export",
+    description: "Artisan coffee brand with rich storytelling that connects global coffee enthusiasts to Brazilian heritage",
+    imageUrl: "/images/international-clients-images/img8.jpg",
+    facebookUrl: "https://www.facebook.com/brazilian.coffee",
+  },
+  {
+    name: "Japanese Beauty Brand",
+    description: "Innovative skincare company with culturally-aware content for international beauty markets",
+    imageUrl: "/images/international-clients-images/img9.jpg",
+    facebookUrl: "https://www.facebook.com/japanese.beauty",
+  },
+  {
+    name: "French Luxury Goods",
+    description: "High-end lifestyle brand with elegant copywriting that embodies French sophistication worldwide",
+    imageUrl: "/images/international-clients-images/img10.jpg",
+    facebookUrl: "https://www.facebook.com/french.luxury",
+  },
+  {
+    name: "Indian Textile Exporter",
+    description: "Traditional textile company with vibrant storytelling for international fashion and home decor markets",
+    imageUrl: "/images/international-clients-images/img11.jpg",
+    facebookUrl: "https://www.facebook.com/indian.textiles",
+  },
+  {
+    name: "Scandinavian Design Studio",
+    description: "Minimalist design brand with clean, purposeful copywriting for global architecture and interior markets",
+    imageUrl: "/images/international-clients-images/img12.jpg",
+    facebookUrl: "https://www.facebook.com/scandinavian.design",
+  },
+  {
+    name: "South African Wine Estate",
+    description: "Premium winery with compelling narratives that showcase South African wine culture to international markets",
+    imageUrl: "/images/international-clients-images/img13.jpg",
+    facebookUrl: "https://www.facebook.com/southafrican.wine",
+  },
+  {
+    name: "New Zealand Adventure Tours",
+    description: "Outdoor adventure company with thrilling content that attracts international thrill-seekers and nature lovers",
+    imageUrl: "/images/international-clients-images/img14.jpg",
+    facebookUrl: "https://www.facebook.com/newzealand.adventure",
+  },
+  {
+    name: "Swiss Financial Services",
+    description: "International banking firm with trustworthy, professional copywriting for global financial markets",
+    imageUrl: "/images/international-clients-images/img15.jpg",
+    facebookUrl: "https://www.facebook.com/swiss.financial",
+  },
 ];
