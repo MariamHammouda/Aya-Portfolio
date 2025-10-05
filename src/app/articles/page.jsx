@@ -25,11 +25,11 @@ export default function ArticlesPage() {
     },
     {
       id: 3,
-      name: "Dot Design",
+      name: "Dot Design (chatbot)",
       slug: "dot-design",
       description: "Design and creative industry articles focusing on design trends, creative processes, and digital innovation.",
       imageUrl: "/images/seo/articles/dotdesign.png",
-      articleCount: "10+ Articles",
+      articleCount: "5 Articles",
       topics: ["Design Trends", "Creative Process", "Digital Innovation", "Brand Identity"]
     }
   ];

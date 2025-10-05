@@ -86,5 +86,53 @@ export const socialMediaCampaigns = [
       "Retargeting strategies",
       "Performance tracking"
     ]
+  },
+  {
+    id: 5,
+    title: "Digital Marketing Strategy Campaign",
+    description: "Comprehensive digital marketing campaign showcasing strategic social media management and advertising expertise. This campaign demonstrates advanced targeting techniques and creative content strategies for maximum engagement and reach.",
+    image: "/images/campaign-images/camp5.png",
+    facebookUrl: "https://www.facebook.com/share/p/1EEGppL7UR/?mibextid=wwXIfr",
+    platform: "Facebook",
+    industry: "Digital Marketing",
+    campaignType: "Strategy & Management",
+    type: "facebook_embedded",
+    embedCode: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FAdvertisingMediaProfit%2Fposts%2Fpfbid0QvW74f2AmcFJHiLfDQcpd2seuLiva7dmDj14zHNs34cRQdGU5pZZqvG2tJyb19SNl&show_text=true&width=500" width="500" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>',
+    objectives: [
+      "Demonstrate strategic expertise",
+      "Showcase campaign management",
+      "Build professional credibility",
+      "Attract potential clients"
+    ],
+    keyFeatures: [
+      "Advanced targeting strategies",
+      "Creative content development",
+      "Performance optimization",
+      "Professional campaign management"
+    ]
+  },
+  {
+    id: 6,
+    title: "Media Profit Advertising Campaign",
+    description: "Professional advertising campaign focused on media profit optimization and strategic social media advertising. This campaign highlights expertise in creating profitable advertising strategies that deliver measurable results for businesses.",
+    image: "/images/campaign-images/camp6.png",
+    facebookUrl: "https://www.facebook.com/share/16cE8jMPA6/?mibextid=wwXIfr",
+    platform: "Facebook",
+    industry: "Advertising & Media",
+    campaignType: "Profit Optimization",
+    type: "facebook_embedded",
+    embedCode: '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FAdvertisingMediaProfit%2Fposts%2Fpfbid02YbXq652WbungMjnKWidSXfxr8scjsbQ2PVHEa8ccvtAB2uH7Y5KzZanfm7dW3Yrrl&show_text=true&width=500" width="500" height="587" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>',
+    objectives: [
+      "Maximize advertising ROI",
+      "Optimize media spending",
+      "Generate profitable campaigns",
+      "Demonstrate advertising expertise"
+    ],
+    keyFeatures: [
+      "Profit-focused strategies",
+      "Media buying optimization",
+      "ROI tracking and analysis",
+      "Strategic ad placement"
+    ]
   }
 ];
